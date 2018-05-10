@@ -1,37 +1,45 @@
-<!DOCTYPE html>
 <html lang="en">
-	<meta>
-		<meta charset="UTF-8">
-		<title>Wyme</title>
-	</meta>
+<meta>
+<meta charset="UTF-8">
+<title>Wyme</title>
+</meta>
 
-	<body>
-	
-		<div id="wyme-app">
-			<h1>Wyme</h1>
-		</div>
+<body>
 
-<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
-<script>
-	updateCount = function(postElement, snapshot_val){
-		console.log(snapshot_val)
-	}
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBBBwB7S6ekYD-oxLPWFu1G7CkKGTXdw-Q",
-    authDomain: "wyme-wichita.firebaseapp.com",
-    databaseURL: "https://wyme-wichita.firebaseio.com",
-    projectId: "wyme-wichita",
-    storageBucket: "wyme-wichita.appspot.com",
-    messagingSenderId: "831469219617"
-  };
-  firebase.initializeApp(config);
-  window.onload = function(){
- 	var count = firebase.database().ref('clubs/dempsey_east');
-	 count.on('value', function(snapshot) {
-		  updateCount("", snapshot.val());
-	  });
-  }
-</script>
-	</body>
+    <div id="wyme-app">
+        <h1>Wyme</h1>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+    <script>
+        updateCount = function(postElement, snapshot_val) {
+                console.log(snapshot_val)
+            }
+	addVistor = function(club){
+		return firebase.database().ref('clubs/'+ club + '/count').once('value').then(function(snapshot){
+			console.log(snapshot.val())
+			firebase.database().ref('clubs/' + club).set({
+			'count': (snapshot.val() + 1)
+			});
+
+		});
+	}	
+        var config = {
+            apiKey: "AIzaSyBBBwB7S6ekYD-oxLPWFu1G7CkKGTXdw-Q",
+            authDomain: "wyme-wichita.firebaseapp.com",
+            databaseURL: "https://wyme-wichita.firebaseio.com",
+            projectId: "wyme-wichita",
+            storageBucket: "wyme-wichita.appspot.com",
+            messagingSenderId: "831469219617"
+        };
+        firebase.initializeApp(config);
+        window.onload = function() {
+            var count = firebase.database().ref('clubs/dempsey_east');
+            count.on('value', function(snapshot) {
+                updateCount("", snapshot.val());
+            });
+        }
+    </script>
+</body>
+
 </html>
