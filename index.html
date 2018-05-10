@@ -11,17 +11,16 @@
 	<body>
 		<div id="wyme-app">
 			<h1>Wyme</h1>
+			<div id="map"></div>
+
 		</div>
 		<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
 		<script>
-			updateCount = function(postElement, snapshot_val) {
-			        console.log(snapshot_val)
-			    }
-			addVistor = function(club){
+			updateClubCount = function(club){
 			return firebase.database().ref('clubs/'+ club + '/count').once('value').then(function(snapshot){
 				console.log(snapshot.val())
 				firebase.database().ref('clubs/' + club).set({
-			'		count': (snapshot.val() + 1)
+				'count': (snapshot.val() + 1)
 			});
 			});
 			}
@@ -70,6 +69,16 @@
 			ui.start('#firebaseui-auth-container', uiConfig);
 			}
 		</script>
+		    <script>
+                var map;
+                function initMap() {
+                        map = new google.maps.Map(document.getElementById('map'), {
+                                center: {lat:-34.397, lng: 150.644},
+                                zoom: 8
+                        });
+                }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6EMfL2t2dv9-juHgJCWxJ1iPKtV4QBbQ&callback=initMap" async defer></script>
+
 	</body>
 </html>
-
