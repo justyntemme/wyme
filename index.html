@@ -19,12 +19,17 @@
 			    }
 			addVistor = function(club){
 			return firebase.database().ref('clubs/'+ club + '/count').once('value').then(function(snapshot){
-			console.log(snapshot.val())
-			firebase.database().ref('clubs/' + club).set({
-			'count': (snapshot.val() + 1)
+				console.log(snapshot.val())
+				firebase.database().ref('clubs/' + club).set({
+			'		count': (snapshot.val() + 1)
 			});
-			
 			});
+			}
+			getClubCount = function(club){
+				var count = firebase.database().ref('clubs/' + club);
+				count.on('value', function(snapshot){
+					updatecount(club, snapshot.val());
+				});
 			}	
 			var config = {
 			    apiKey: "AIzaSyBBBwB7S6ekYD-oxLPWFu1G7CkKGTXdw-Q",
@@ -35,13 +40,8 @@
 			    messagingSenderId: "831469219617"
 			};
 			window.onload = function() {
-			    
-			firebase.initializeApp(config);
-			renderLogin();
-			var count = firebase.database().ref('clubs/dempsey_east');
-			    count.on('value', function(snapshot) {
-			        updateCount("", snapshot.val());
-			    });
+				firebase.initializeApp(config);
+				renderLogin();
 			}
 		</script>
 		<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
