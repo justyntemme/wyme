@@ -8,25 +8,30 @@
 	<body>
 	
 		<div id="wyme-app">
-			<h1>{{ msg }}</h1>
+			<h1>Wyme</h1>
 		</div>
 
-		<!-- Vue -->
-		<script src="https://unpkg.com/vue/dist/vue.js"></script>
-		<!-- Firebase -->
-		<script src="https://gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-		<!-- VueFire -->
-		<script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
-		<script>
-			new Vue({
-				el: "#hello-world-app",
-				data() {
-					return {
-						msg: "Hello World!"
-					}
-				}
-			});
-		</script>
-
+<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+<script>
+	updateCount = function(postElement, snapshot_val){
+		console.log(snapshot_val)
+	}
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBBBwB7S6ekYD-oxLPWFu1G7CkKGTXdw-Q",
+    authDomain: "wyme-wichita.firebaseapp.com",
+    databaseURL: "https://wyme-wichita.firebaseio.com",
+    projectId: "wyme-wichita",
+    storageBucket: "wyme-wichita.appspot.com",
+    messagingSenderId: "831469219617"
+  };
+  firebase.initializeApp(config);
+  window.onload = function(){
+ 	var count = firebase.database().ref('clubs/dempsey_east');
+	 count.on('value', function(snapshot) {
+		  updateCount("", snapshot.val());
+	  });
+  }
+</script>
 	</body>
 </html>
