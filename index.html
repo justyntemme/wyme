@@ -1,9 +1,13 @@
 <html lang="en">
+	<head>
 <meta>
 <meta charset="UTF-8">
 <title>Wyme</title>
 </meta>
-
+<head>
+<header>
+	<div id="firebaseui-auth-container"></div>
+</header>
 <body>
 
     <div id="wyme-app">
@@ -32,14 +36,42 @@
             storageBucket: "wyme-wichita.appspot.com",
             messagingSenderId: "831469219617"
         };
-        firebase.initializeApp(config);
         window.onload = function() {
-            var count = firebase.database().ref('clubs/dempsey_east');
+            
+        firebase.initializeApp(config);
+	renderLogin();
+	var count = firebase.database().ref('clubs/dempsey_east');
             count.on('value', function(snapshot) {
                 updateCount("", snapshot.val());
             });
         }
     </script>
+	<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+	<script>
+		function renderLogin() {
+		var authObject = firebase.auth()
+		var ui = new firebaseui.auth.AuthUI(firebase.auth());
+		var uiConfig = {
+			callbacks: {
+				signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+					return true;
+				},
+				uiShown: function() {
+				}
+			},
+			signInflow: 'popup',
+			signInSuccessUrl: '/',
+			signInOptions: [
+				firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+				firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+				firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+				],
+			tosUrl: '/'
+		};
+	ui.start('#firebaseui-auth-container', uiConfig);
+		}
+	</script>
 </body>
 
 </html>
