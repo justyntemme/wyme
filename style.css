@@ -5,6 +5,7 @@
 
 .dropbtn {
 	display: block;
+	width: 100%;
 	background-color: #3498DB;
 	color: white;
 	padding: 16px;
