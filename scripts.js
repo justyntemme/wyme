@@ -15,6 +15,11 @@ var app;
 				new google.maps.LatLng(37.673222,-97.401393)
 
 			],
+			clubs: [{
+				key:"location", value:"",
+				key:"count", value: 0
+			}
+			]
 		},
 		methods: {
 			initMap: function() {
