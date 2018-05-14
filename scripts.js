@@ -27,26 +27,9 @@ var app;
 
 })();
 
-function getPoints() {
-	return [
-		new google.maps.LatLng(37.673222,-97.401393),
-		new google.maps.LatLng(37.673222,-97.401393),
-		new google.maps.LatLng(37.673222,-97.401393),
-		new google.maps.LatLng(37.673222,-97.401393),
-		new google.maps.LatLng(37.673222,-97.401393)
-	];
-}
 
-function initMap() {
-		map = new window.google.maps.Map(document.getElementById('map'), {
-			center: {lat:37.673222, lng: -97.401393},
-			zoom:12
-		});
-		heatmap = new google.maps.visualization.HeatmapLayer({
-			data: getPoints(),
-			map: map
-		});
-}
+
+
 
 function renderLogin() {
 	var authObject = firebase.auth();
@@ -70,8 +53,29 @@ function renderLogin() {
 	};
 	document.addEventListener("DOMContentLoaded", function(event) {
 		ui.start('#firebaseui-auth-container', uiConfig);
+		window.initMap();
 	  });
 	
+}
+
+function getPoints() {
+	return [
+		new google.maps.LatLng(37.673222,-97.401393),
+		new google.maps.LatLng(37.673222,-97.401393),
+		new google.maps.LatLng(37.673222,-97.401393),
+		new google.maps.LatLng(37.673222,-97.401393),
+		new google.maps.LatLng(37.673222,-97.401393)
+	];
+}
+	function initMap() {
+		map = new window.google.maps.Map(document.getElementById('map'), {
+			center: {lat:37.673222, lng: -97.401393},
+			zoom:12
+		});
+		heatmap = new google.maps.visualization.HeatmapLayer({
+			data: getPoints(),
+			map: map
+		});
 }
 
 function updateClubCount(club){
