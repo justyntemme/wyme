@@ -5,12 +5,21 @@
 		<title></title>
 		</meta>
 		<head>
+			<link rel="stylesheet" href="style.css">
+			<script src="scripts.js"></script>
 			<header>
-				<div id="check-in">
 
-				</div>
-				<div style="border-bottom: darkslateblue 3px;" id="top-header">
-					<div class="container clearfix">
+				<divid="top-header">
+					<div id="check-in">
+						<button id="checkinBtn" onclick="displayCheckin()" class="dropbtn center">Check In</button>
+						<div id="checkinDropdown"class="container clearfix dropdown-content">
+							<button>click me</button>
+							<button>click me</button>
+						</div>
+					</div>
+					
+					<button id="loginBtn" onclick="displayLogin()" class="dropbtn center">Login</button>
+					<div id="loginDropdown" class="container clearfix dropdown-content">
 						<div id="firebaseui-auth-container"></div>
 					</divk
 				</div>
