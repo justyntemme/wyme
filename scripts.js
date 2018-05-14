@@ -26,11 +26,7 @@ var app;
 	})
 
 })();
-
-
-
-
-
+/** These funcitons are outside the scope of view and must be called with window.function() */
 function renderLogin() {
 	var authObject = firebase.auth();
 	var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -53,7 +49,6 @@ function renderLogin() {
 	};
 	document.addEventListener("DOMContentLoaded", function(event) {
 		ui.start('#firebaseui-auth-container', uiConfig);
-		window.initMap();
 	  });
 	
 }
