@@ -51,6 +51,21 @@ var app;
 					ui.start('#firebaseui-auth-container', uiConfig);
 	 			});
 				
+			},
+			checkIn: function(club) {
+				return window.firebase.database().ref('clubs/'+ club + '/count').once('value').then(function(snapshot){
+					console.log(snapshot.val());
+					window.firebase.database().ref('clubs/' + club).set({
+						'count': (snapshot.val() + 1)
+					});
+				});
+			},
+			getClubCount: function(){
+				club= "";
+				var count = firebase.database().ref('clubs/' + club);
+				count.on('value', function(snapshot){
+					//updatecount(club, snapshot.val());
+				});
 			}
 	
 		},
@@ -71,24 +86,6 @@ var app;
 
 })();
 
-
-
-
-function updateClubCount(club){
-	return firebase.database().ref('clubs/'+ club + '/count').once('value').then(function(snapshot){
-		console.log(snapshot.val());
-		firebase.database().ref('clubs/' + club).set({
-			'count': (snapshot.val() + 1)
-		});
-	});
-}
-
-function getClubCount(club){
-	var count = firebase.database().ref('clubs/' + club);
-	count.on('value', function(snapshot){
-		updatecount(club, snapshot.val());
-	});
-}
 
 
 
