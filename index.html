@@ -1,38 +1,39 @@
+<!DOCTYPE HTML>
 <html lang="en">
-	<head>
-		<meta>
-		<meta charset="UTF-8">
-		<title></title>
-		</meta>
-		<head>
-			<link rel="stylesheet" href="style.css">
-			<script src="scripts.js"></script>
-			<header>
-
-				<divid="top-header">
-					<div id="check-in">
-						<button id="checkinBtn" onclick="displayCheckin()" class="dropbtn center">Check In</button>
-						<div id="checkinDropdown"class="container clearfix dropdown-content">
-							<button>click me</button>
-							<button>click me</button>
-						</div>
+<head>
+	<meta charset="UTF-8">
+	<title>What's Poppin'</title>
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+	<link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="app">
+		<header>
+			<div id="top-header">
+				<div id="check-in">
+					<button v-click="toggle(checkinVisible)" id="checkinBtn" class="dropbtn center">Check In</button>
+					<div v-if="checkinVisible" id="checkinDropdown" class="dropdown-content">
+						<button>click me</button>
+						<button>click me</button>
 					</div>
-					
-					<button id="loginBtn" onclick="displayLogin()" class="dropbtn center">Login</button>
-					<div id="loginDropdown" class="container clearfix dropdown-content">
-						<div id="firebaseui-auth-container"></div>
-					</divk
 				</div>
-			</header>
-	<body>
-		<div id="wyme-app">
-			<div style="width: 100%; height: 90%;" id="map"></div>
-		</div>
-		<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
 
-		<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
-		<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
-	
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6EMfL2t2dv9-juHgJCWxJ1iPKtV4QBbQ&callback=initMap&libraries=visualization" async defer></script>
-	</body>
+				<button v-click="toggle(loginVisible)" id="loginBtn" class="dropbtn center">Login</button>
+				<div v-if="loginVisible" id="loginDropdown" class="dropdown-content">
+					<div id="firebaseui-auth-container"></div>
+				</div>
+			</div>
+		</header>
+
+		<div id="wyme-app">
+			<div id="map"></div>
+		</div>
+	</div>
+
+	<script src="https://unpkg.com/vue@2.5.16/dist/vue.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6EMfL2t2dv9-juHgJCWxJ1iPKtV4QBbQ&callback=initMap&libraries=visualization" async defer></script>
+	<script src="scripts.js"></script>
+</body>
 </html>
