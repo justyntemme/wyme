@@ -7,25 +7,27 @@
 	<link type="text/css" rel="stylesheet" href="style.css">
 </head>
 <body>
-	<header>
-		<div id="top-header">
-			<div id="check-in">
-				<button id="checkinBtn" class="dropbtn center">Check In</button>
-				<div id="checkinDropdown" class="dropdown-content">
-					<button>click me</button>
-					<button>click me</button>
+	<div id="app">
+		<header>
+			<div id="top-header">
+				<div id="check-in">
+					<button v-click="toggle(checkinVisible)" id="checkinBtn" class="dropbtn center">Check In</button>
+					<div v-if="checkinVisible" id="checkinDropdown" class="dropdown-content">
+						<button>click me</button>
+						<button>click me</button>
+					</div>
+				</div>
+
+				<button v-click="toggle(loginVisible)" id="loginBtn" class="dropbtn center">Login</button>
+				<div v-if="loginVisible" id="loginDropdown" class="dropdown-content">
+					<div id="firebaseui-auth-container"></div>
 				</div>
 			</div>
+		</header>
 
-			<button id="loginBtn" class="dropbtn center">Login</button>
-			<div id="loginDropdown" class="dropdown-content">
-				<div id="firebaseui-auth-container"></div>
-			</div>
+		<div id="wyme-app">
+			<div id="map"></div>
 		</div>
-	</header>
-
-	<div id="wyme-app">
-		<div id="map"></div>
 	</div>
 
 	<script src="https://unpkg.com/vue@2.5.16/dist/vue.min.js"></script>
