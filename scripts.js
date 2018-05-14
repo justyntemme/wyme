@@ -17,7 +17,9 @@ var app;
 			],
 			clubs: [{
 				key:"location", value:"",
-				key:"count", value: 0
+				key:"count", value: 0,
+				key:"name", value: "",
+
 			}
 			]
 		},
