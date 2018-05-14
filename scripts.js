@@ -8,30 +8,24 @@ var app;
 			checkinVisible: false
 		},
 		methods: {
-			toggle: function(dataVar) {
-				var v = this;
-				v.dataVar = !v.dataVar;
-			},
-			hideAllDropdowns: function() {
-				var v = this;
-				v.loginVisible = false;
-				v.checkinVisible = false;
-			}
+	
 		},
 		mounted: function() {
+			var config = {
+				apiKey: "AIzaSyBBBwB7S6ekYD-oxLPWFu1G7CkKGTXdw-Q",
+				authDomain: "wyme-wichita.firebaseapp.com",
+				databaseURL: "https://wyme-wichita.firebaseio.com",
+				projectId: "wyme-wichita",
+				storageBucket: "wyme-wichita.appspot.com",
+				messagingSenderId: "831469219617"
+			  };
 			firebase.initializeApp(config);
+			initMap();
 			window.renderLogin();
 		}
 	})
 
 })();
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-	if (!event.target.matches('.dropbtn')) {
-		app.hideAllDropdowns();
-	}
-};
 
 function getPoints() {
 	return [
@@ -43,16 +37,15 @@ function getPoints() {
 	];
 }
 
-var map;
 function initMap() {
-	map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat:37.673222, lng: -97.401393},
-		zoom:12
-	});
-	heatmap = new google.maps.visualization.HeatmapLayer({
-		data: getPoints(),
-		map: map
-	});
+		map = new window.google.maps.Map(document.getElementById('map'), {
+			center: {lat:37.673222, lng: -97.401393},
+			zoom:12
+		});
+		heatmap = new google.maps.visualization.HeatmapLayer({
+			data: getPoints(),
+			map: map
+		});
 }
 
 function renderLogin() {
@@ -75,7 +68,10 @@ function renderLogin() {
 		],
 		tosUrl: '/'
 	};
-	ui.start('#firebaseui-auth-container', uiConfig);
+	document.addEventListener("DOMContentLoaded", function(event) {
+		ui.start('#firebaseui-auth-container', uiConfig);
+	  });
+	
 }
 
 function updateClubCount(club){
@@ -94,11 +90,5 @@ function getClubCount(club){
 	});
 };
 
-var config = {
-	apiKey: "AIzaSyBBBwB7S6ekYD-oxLPWFu1G7CkKGTXdw-Q",
-	authDomain: "wyme-wichita.firebaseapp.com",
-	databaseURL: "https://wyme-wichita.firebaseio.com",
-	projectId: "wyme-wichita",
-	storageBucket: "wyme-wichita.appspot.com",
-	messagingSenderId: "831469219617"
-};
+
+

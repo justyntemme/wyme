@@ -11,15 +11,15 @@
 		<header>
 			<div id="top-header">
 				<div id="check-in">
-					<button v-click="toggle(checkinVisible)" id="checkinBtn" class="dropbtn center">Check In</button>
-					<div v-if="checkinVisible" id="checkinDropdown" class="dropdown-content">
+					<button v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="dropbtn center">Check In</button>
+					<div v-show="checkinVisible" id="checkinDropdown" class="dropdown-content">
 						<button>click me</button>
 						<button>click me</button>
 					</div>
 				</div>
 
-				<button v-click="toggle(loginVisible)" id="loginBtn" class="dropbtn center">Login</button>
-				<div v-if="loginVisible" id="loginDropdown" class="dropdown-content">
+				<button v-on:click="loginVisible = !loginVisible" id="loginBtn" class="dropbtn center">Login</button>
+				<div v-show="loginVisible" id="loginDropdown" class="dropdown-content">
 					<div id="firebaseui-auth-container"></div>
 				</div>
 			</div>
@@ -29,11 +29,31 @@
 			<div id="map"></div>
 		</div>
 	</div>
-
+<script>
+	function getPoints() {
+	return [
+		new google.maps.LatLng(37.673222,-97.401393),
+		new google.maps.LatLng(37.673222,-97.401393),
+		new google.maps.LatLng(37.673222,-97.401393),
+		new google.maps.LatLng(37.673222,-97.401393),
+		new google.maps.LatLng(37.673222,-97.401393)
+	];
+}
+	function initMap() {
+		map = new window.google.maps.Map(document.getElementById('map'), {
+			center: {lat:37.673222, lng: -97.401393},
+			zoom:12
+		});
+		heatmap = new google.maps.visualization.HeatmapLayer({
+			data: getPoints(),
+			map: map
+		});
+}
+</script>
 	<script src="https://unpkg.com/vue@2.5.16/dist/vue.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6EMfL2t2dv9-juHgJCWxJ1iPKtV4QBbQ&callback=initMap&libraries=visualization" async defer></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAb0UF5wALh0aiVILg39i6cd8xtRwoe64Q&callback=initMap&libraries=visualization"></script>
 	<script src="scripts.js"></script>
 </body>
 </html>
