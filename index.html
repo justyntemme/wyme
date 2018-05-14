@@ -10,7 +10,7 @@
 	<div id="app">
 		<header>
 			<div id="top-header">
-				<div id="check-in">
+				<div v-show="loggedIn" id="check-in">
 					<button v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="dropbtn center">Check In</button>
 					<div v-show="checkinVisible" id="checkinDropdown" class="dropdown-content">
 						<button>click me</button>
@@ -18,7 +18,7 @@
 					</div>
 				</div>
 
-				<button v-on:click="loginVisible = !loginVisible" id="loginBtn" class="dropbtn center">Login</button>
+				<button v-on:click="loginVisible = !loginVisible" v-show="!loggedIn" id="loginBtn" class="dropbtn center">Login</button>
 				<div v-show="loginVisible" id="loginDropdown" class="dropdown-content">
 					<div id="firebaseui-auth-container"></div>
 				</div>
