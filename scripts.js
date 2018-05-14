@@ -6,6 +6,7 @@ var app;
 		data: {
 			loginVisible: false,
 			checkinVisible: false,
+			loggedIn: false, //TODO implement cookie based token system
 			heatPoints: [
 				new google.maps.LatLng(37.673222,-97.401393),
 				new google.maps.LatLng(37.673222,-97.401393),
@@ -18,7 +19,7 @@ var app;
 		methods: {
 			initMap: function() {
 				map = new window.google.maps.Map(document.getElementById('map'), {
-					center: {lat:37.673222, lng: -97.401393},
+					center: {lat:37.6872, lng: -97.3301},
 					zoom:12
 				});
 				heatmap = new window.google.maps.visualization.HeatmapLayer({
