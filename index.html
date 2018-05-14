@@ -2,20 +2,22 @@
 	<head>
 		<meta>
 		<meta charset="UTF-8">
-		<title>Wyme</title>
+		<title></title>
 		</meta>
 		<head>
 			<header>
+				<div id="check-in">
+
+				</div>
 				<div style="border-bottom: darkslateblue 3px;" id="top-header">
 					<div class="container clearfix">
 						<div id="firebaseui-auth-container"></div>
-					</div>
+					</divk
 				</div>
 			</header>
 	<body>
 		<div id="wyme-app">
-			<h1>Wyme</h1>
-			<div id="map"></div>
+			<div style="width: 100%; height: 90%;" id="map"></div>
 		</div>
 		<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
 		<script>
@@ -76,8 +78,8 @@
                 var map;
                 function initMap() {
                         map = new google.maps.Map(document.getElementById('map'), {
-                                center: {lat:-34.397, lng: 150.644},
-                                zoom: 8
+                                center: {lat:37.673222, lng: -97.401393},
+                                zoom:12
                         });
                 }
         </script>
