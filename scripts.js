@@ -60,13 +60,20 @@ var app;
 					});
 				});
 			},
-			getClubCount: function(){
-				club= "";
+			getClubCount: function(club){
 				var count = firebase.database().ref('clubs/' + club);
 				count.on('value', function(snapshot){
 					//updatecount(club, snapshot.val());
 				});
-			}
+			},
+			getClubs: function(){
+
+			},
+			updateClubCount: function(club, count) {
+
+			},
+
+
 	
 		},
 		mounted: function() {
