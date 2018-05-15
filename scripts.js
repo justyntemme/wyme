@@ -23,7 +23,8 @@ var app;
 					var lon = this.clubs[key].lon
 					var i = 0;
 					while (i < this.clubs[key].count) {
-						Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, lon))
+						this.heatPoints.push(new google.maps.LatLng(lat,lon))
+						// old method not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, lon))
 						i++;
 					}
 				}
