@@ -88,11 +88,12 @@ var app;
 			},
 			updateMaps: function() {
 				console.log("maps need updated!")
+				//TODO fix me so i don't break shit
 				var v = this;
 				for (var key in v.clubs) {
 					var lat = this.clubs[key].lat
 					var lon = this.clubs[key].lon
-					var i = 0;
+					var i = this.heatPoints.length;
 					while (i < this.clubs[key].count) {
 						console.log(lat)
 						console.log(lon)
