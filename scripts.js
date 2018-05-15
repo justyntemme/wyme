@@ -20,6 +20,16 @@ var app;
 		},
 		methods: {
 			initMap: function() {
+				var v = this;
+				console.log(v.clubs);
+				//grab latlng
+				//grab count
+				//for statement i < count array . set arraylength+i latlnt
+				for (var key in v.clubs) {
+					console.log(key)
+				}
+
+
 				map = new window.google.maps.Map(document.getElementById('map'), {
 					center: {lat:37.6872, lng: -97.3301},
 					zoom:12
@@ -74,24 +84,17 @@ var app;
 
 				});
 			},
-			getClubCount: function(club){
-				var count = firebase.database().ref('clubs/' + club);
-				count.on('value', function(snapshot){
-					return snapshot.val();
-				});
-			},
 			getClubs: function(){
+				return new Promise((resolve, reject) => {
 				var v = this;
 				dbclubs = firebase.database().ref('clubs/');
 				dbclubs.on('value', function(snapshot){
 					for (var club in snapshot.val()) {
-						Vue.set(v.clubs,club,snapshot.val()[club])
+						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club])
 					} 
+				resolve("SUCCESS")
 				});
-
-			},
-			updateClubCount: function(club, count) {
-
+			})
 			},
 		},
 		mounted: function() {
@@ -104,9 +107,9 @@ var app;
 				messagingSenderId: "831469219617"
 			  };
 			firebase.initializeApp(config);
-			this.initMap();
 			this.initLogin();
-			this.getClubs();
+			const promise = this.getClubs()
+			promise.then(this.initMap, null)
 		}
 	});
 
