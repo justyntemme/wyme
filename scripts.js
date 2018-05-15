@@ -88,6 +88,18 @@ var app;
 			},
 			updateMaps: function() {
 				console.log("maps need updated!")
+				var v = this;
+				for (var key in v.clubs) {
+					var lat = this.clubs[key].lat
+					var lon = this.clubs[key].lon
+					var i = 0;
+					while (i < this.clubs[key].count) {
+						console.log(lat)
+						console.log(lon)
+						Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, lon))
+						i++;
+					}
+				}
 			},
 			getClubs: function(){
 				return new Promise((resolve, reject) => {
