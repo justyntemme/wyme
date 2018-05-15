@@ -8,12 +8,6 @@ var app;
 			checkinVisible: false,
 			loggedIn: true, //TODO implement cookie based token system
 			heatPoints: [
-				new google.maps.LatLng(37.673222,-97.401393),
-				new google.maps.LatLng(37.673222,-97.401393),
-				new google.maps.LatLng(37.673222,-97.401393),
-				new google.maps.LatLng(37.673222,-97.401393),
-				new google.maps.LatLng(37.673222,-97.401393)
-
 			],
 			clubs: 
 				{}
@@ -26,7 +20,15 @@ var app;
 				//grab count
 				//for statement i < count array . set arraylength+i latlnt
 				for (var key in v.clubs) {
-					console.log(key)
+					var lat = this.clubs[key].lat
+					var lon = this.clubs[key].lon
+					var i = 0;
+					while (i < this.clubs[key].count) {
+						console.log(lat)
+						console.log(lon)
+						Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, lon))
+						i++;
+					}
 				}
 
 
@@ -84,6 +86,9 @@ var app;
 
 				});
 			},
+			updateMaps: function() {
+				console.log("maps need updated!")
+			},
 			getClubs: function(){
 				return new Promise((resolve, reject) => {
 				var v = this;
@@ -91,6 +96,7 @@ var app;
 				dbclubs.on('value', function(snapshot){
 					for (var club in snapshot.val()) {
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club])
+						app.updateMaps();
 					} 
 				resolve("SUCCESS")
 				});
