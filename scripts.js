@@ -7,8 +7,7 @@ var app;
 			loginVisible: false,
 			checkinVisible: false,
 			loggedIn: true, //TODO implement cookie based token system
-			heatPoints: [
-			],
+			heatPoints: new google.maps.MVCArray(),
 			clubs: 
 				{}
 		},
@@ -24,8 +23,6 @@ var app;
 					var lon = this.clubs[key].lon
 					var i = 0;
 					while (i < this.clubs[key].count) {
-						console.log(lat)
-						console.log(lon)
 						Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, lon))
 						i++;
 					}
@@ -75,7 +72,6 @@ var app;
 					count = (snapshot.val()['count'] + 1)
 					lon = snapshot.val()['lon']
 					lat = snapshot.val()['lat']
-					console.log(name + count + lon + lat)
 				});
 				firebase.database().ref('clubs/' + club).set({
 
@@ -92,12 +88,11 @@ var app;
 				var v = this;
 				for (var key in v.clubs) {
 					var lat = this.clubs[key].lat
-					var lon = this.clubs[key].lon
+					var lon = this.clubs[key].lon 
 					var i = this.heatPoints.length;
 					while (i < this.clubs[key].count) {
-						console.log(lat)
-						console.log(lon)
-						Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, lon))
+						this.heatPoints.push(new google.maps.LatLng(lat,lon))
+						// not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, (lon - (i *.0001))))
 						i++;
 					}
 				}
