@@ -15,13 +15,8 @@ var app;
 				new google.maps.LatLng(37.673222,-97.401393)
 
 			],
-			clubs: [{
-				key:"location", value:"",
-				key:"count", value: 0,
-				key:"name", value: "",
-
-			}
-			]
+			clubs: 
+				{}
 		},
 		methods: {
 			initMap: function() {
@@ -75,14 +70,19 @@ var app;
 				});
 			},
 			getClubs: function(){
+				var v = this;
+				dbclubs = firebase.database().ref('clubs/');
+				dbclubs.on('value', function(snapshot){
+					for (var club in snapshot.val()) {
+						Vue.set(v.clubs,club,snapshot.val()[club])
+						console.log(v.clubs[club]["name"])
+					} 
+				});
 
 			},
 			updateClubCount: function(club, count) {
 
 			},
-
-
-	
 		},
 		mounted: function() {
 			var config = {
@@ -96,11 +96,8 @@ var app;
 			firebase.initializeApp(config);
 			this.initMap();
 			this.initLogin();
+			this.getClubs();
 		}
 	});
 
 })();
-
-
-
-
