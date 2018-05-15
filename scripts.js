@@ -19,11 +19,11 @@ var app;
 				//grab count
 				//for statement i < count array . set arraylength+i latlnt
 				for (var key in v.clubs) {
-					var lat = this.clubs[key].lat
-					var lon = this.clubs[key].lon
+					var lat = this.clubs[key].lat;
+					var lon = this.clubs[key].lon;
 					var i = 0;
 					while (i < this.clubs[key].count) {
-						this.heatPoints.push(new google.maps.LatLng(lat,lon))
+						this.heatPoints.push(new google.maps.LatLng(lat,lon));
 						// old method not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, lon))
 						i++;
 					}
@@ -68,11 +68,11 @@ var app;
 			checkIn: function(club) {
 				clubObj = firebase.database().ref('clubs/'+ club);
 				clubObj.on('value', function(snapshot){
-					console.log(snapshot.val()['name'])
-					name = snapshot.val()['name']
-					count = (snapshot.val()['count'] + 1)
-					lon = snapshot.val()['lon']
-					lat = snapshot.val()['lat']
+					console.log(snapshot.val()['name']);
+					name = snapshot.val()['name'];
+					count = (snapshot.val()['count'] + 1);
+					lon = snapshot.val()['lon'];
+					lat = snapshot.val()['lat'];
 				});
 				firebase.database().ref('clubs/' + club).set({
 
@@ -84,15 +84,13 @@ var app;
 				});
 			},
 			updateMaps: function() {
-				console.log("maps need updated!")
-				//TODO fix me so i don't break shit
 				var v = this;
 				for (var key in v.clubs) {
-					var lat = this.clubs[key].lat
-					var lon = this.clubs[key].lon 
+					var lat = this.clubs[key].lat;
+					var lon = this.clubs[key].lon;
 					var i = this.heatPoints.length;
 					while (i < this.clubs[key].count) {
-						this.heatPoints.push(new google.maps.LatLng(lat,lon))
+						this.heatPoints.push(new google.maps.LatLng(lat,lon));
 						// not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, (lon - (i *.0001))))
 						i++;
 					}
@@ -104,12 +102,12 @@ var app;
 				dbclubs = firebase.database().ref('clubs/');
 				dbclubs.on('value', function(snapshot){
 					for (var club in snapshot.val()) {
-						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club])
+						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
 						app.updateMaps();
 					} 
-				resolve("SUCCESS")
+				resolve("SUCCESS");
 				});
-			})
+			});
 			},
 		},
 		mounted: function() {
@@ -123,8 +121,8 @@ var app;
 			  };
 			firebase.initializeApp(config);
 			this.initLogin();
-			const promise = this.getClubs()
-			promise.then(this.initMap, null)
+			const promise = this.getClubs();
+			promise.then(this.initMap, null);
 		}
 	});
 
