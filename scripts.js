@@ -6,7 +6,7 @@ var app;
 		data: {
 			loginVisible: false,
 			checkinVisible: false,
-			loggedIn: false, //TODO implement cookie based token system
+			loggedIn: true, //TODO implement cookie based token system
 			heatPoints: [
 				new google.maps.LatLng(37.673222,-97.401393),
 				new google.maps.LatLng(37.673222,-97.401393),
@@ -56,17 +56,28 @@ var app;
 				
 			},
 			checkIn: function(club) {
-				return window.firebase.database().ref('clubs/'+ club + '/count').once('value').then(function(snapshot){
-					console.log(snapshot.val());
-					window.firebase.database().ref('clubs/' + club).set({
-						'count': (snapshot.val() + 1)
-					});
+				clubObj = firebase.database().ref('clubs/'+ club);
+				clubObj.on('value', function(snapshot){
+					console.log(snapshot.val()['name'])
+					name = snapshot.val()['name']
+					count = (snapshot.val()['count'] + 1)
+					lon = snapshot.val()['lon']
+					lat = snapshot.val()['lat']
+					console.log(name + count + lon + lat)
+				});
+				firebase.database().ref('clubs/' + club).set({
+
+					'count': count,
+					'name': name,
+					'lon': lon,
+					'lat': lat
+
 				});
 			},
 			getClubCount: function(club){
 				var count = firebase.database().ref('clubs/' + club);
 				count.on('value', function(snapshot){
-					//updatecount(club, snapshot.val());
+					return snapshot.val();
 				});
 			},
 			getClubs: function(){
@@ -75,7 +86,6 @@ var app;
 				dbclubs.on('value', function(snapshot){
 					for (var club in snapshot.val()) {
 						Vue.set(v.clubs,club,snapshot.val()[club])
-						console.log(v.clubs[club]["name"])
 					} 
 				});
 

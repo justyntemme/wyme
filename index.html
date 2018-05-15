@@ -13,8 +13,9 @@
 				<div v-show="loggedIn" id="check-in">
 					<button v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="dropbtn center">Check In</button>
 					<div v-show="checkinVisible" id="checkinDropdown" class="dropdown-content">
-						<button>click me</button>
-						<button>click me</button>
+						<li v-for="club in clubs">
+							<button v-on:click="checkIn(club.name)">vote for {{ club.name}} </button>
+						</li>
 					</div>
 				</div>
 
