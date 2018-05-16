@@ -14,7 +14,7 @@
 					<button v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="dropbtn center">Check In</button>
 					<div v-show="checkinVisible" id="checkinDropdown" class="dropdown-content">
 						<li v-for="club in clubs">
-							<button v-on:click="checkIn(club.name)">vote for {{ club.name}} </button>
+							<button v-on:click="checkIn(club.name)" class="dropbtn center">vote for {{ club.name}} </button>
 						</li>
 					</div>
 				</div>
@@ -33,7 +33,7 @@
 
 	<script src="https://unpkg.com/vue@2.5.16/dist/vue.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
-	<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+	<script src="https://cdn.firebase.com/libs/firebaseui/3.0.0/firebaseui.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAb0UF5wALh0aiVILg39i6cd8xtRwoe64Q&&libraries=visualization"></script>
 	<script src="scripts.js"></script>
 </body>

@@ -5,8 +5,9 @@ var app;
 		el: '#app',
 		data: {
 			loginVisible: false,
-			checkinVisible: false,
-			loggedIn: true, //TODO implement cookie based token system
+			checkinVisible: true,
+			loggedIn: true,
+			user: firebase.auth.user, 
 			heatPoints: new google.maps.MVCArray(),
 			clubs: 
 				{}
@@ -14,10 +15,6 @@ var app;
 		methods: {
 			initMap: function() {
 				var v = this;
-				console.log(v.clubs);
-				//grab latlng
-				//grab count
-				//for statement i < count array . set arraylength+i latlnt
 				for (var key in v.clubs) {
 					var lat = this.clubs[key].lat;
 					var lon = this.clubs[key].lon;
@@ -28,37 +25,45 @@ var app;
 						i++;
 					}
 				}
-
-
 				map = new window.google.maps.Map(document.getElementById('map'), {
 					center: {lat:37.6872, lng: -97.3301},
 					zoom:12
 				});
+				
 				heatmap = new window.google.maps.visualization.HeatmapLayer({
 					data: this.heatPoints,
-					map: map
+					map: map,
+					maxIntensity: 100,
+					radius: 50,
+					dissipating: true
 				});
+
 
 			},
 			initLogin: function() {
+				var v = this;
 				var authObject = window.firebase.auth();
 				var ui = new window.firebaseui.auth.AuthUI(window.firebase.auth());
 				var uiConfig = {
 					callbacks: {
 						signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+							console.log(authResult);
+								v.user = authResult.user;
+								v.loginVisible = false;
+								v.loggedIn = true;
 							return true;
 						},
 						uiShown: function() {
 						}
 					},
 					signInflow: 'popup',
-					signInSuccessUrl: '/',
+					signInSuccessUrl: '',
 					signInOptions: [
 						window.firebase.auth.GoogleAuthProvider.PROVIDER_ID,
 						window.firebase.auth.TwitterAuthProvider.PROVIDER_ID,
 						window.firebase.auth.FacebookAuthProvider.PROVIDER_ID,
 					],
-					tosUrl: '/'
+					tosUrl: ''
 				};
 				window.document.addEventListener("DOMContentLoaded", function(event) {
 					ui.start('#firebaseui-auth-container', uiConfig);
@@ -66,14 +71,17 @@ var app;
 				
 			},
 			checkIn: function(club) {
+				console.log("checking In")
 				clubObj = firebase.database().ref('clubs/'+ club);
 				clubObj.on('value', function(snapshot){
-					console.log(snapshot.val()['name']);
+					console.log(snapshot.val()['name'] + " clicked");
 					name = snapshot.val()['name'];
 					count = (snapshot.val()['count'] + 1);
 					lon = snapshot.val()['lon'];
 					lat = snapshot.val()['lat'];
+	
 				});
+
 				firebase.database().ref('clubs/' + club).set({
 
 					'count': count,
@@ -82,6 +90,7 @@ var app;
 					'lat': lat
 
 				});
+		
 			},
 			updateMaps: function() {
 				var v = this;
@@ -90,18 +99,20 @@ var app;
 					var lon = this.clubs[key].lon;
 					var i = this.heatPoints.length;
 					while (i < this.clubs[key].count) {
-						this.heatPoints.push(new google.maps.LatLng(lat,lon));
+						this.heatPoints.push(new google.maps.LatLng((lat + (.0001 + i)),(lon + (.0001 * i))));
 						// not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, (lon - (i *.0001))))
 						i++;
 					}
 				}
 			},
 			getClubs: function(){
+				console.log("getting clubs")
 				return new Promise((resolve, reject) => {
 				var v = this;
 				dbclubs = firebase.database().ref('clubs/');
 				dbclubs.on('value', function(snapshot){
 					for (var club in snapshot.val()) {
+						console.log(snapshot.val())
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
 						app.updateMaps();
 					} 
@@ -121,6 +132,8 @@ var app;
 			  };
 			firebase.initializeApp(config);
 			this.initLogin();
+
+			
 			const promise = this.getClubs();
 			promise.then(this.initMap, null);
 		}
