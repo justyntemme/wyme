@@ -12,12 +12,14 @@
 			<div id="top-header">
 				<div v-show="loggedIn" id="check-in">
 					<button v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="dropbtn center">Check In</button>
-					<div v-show="checkinVisible" id="checkinDropdown" class="dropdown-content">
-						<li v-for="club in clubs">
-							<button v-on:click="checkIn(club.name)" class="dropbtn center">vote for {{ club.name}} </button>
-						</li>
-					</div>
+						<div v-for="club in clubs">
+
+					<transition name="fade">
+								<button v-if="checkinVisible" v-on:click="checkIn(club.name)" class="dropbtn center">vote for {{ club.name}} </button>
+					</transition>
+							</div>
 				</div>
+			</div>
 
 				<button v-on:click="loginVisible = !loginVisible" v-show="!loggedIn" id="loginBtn" class="dropbtn center">Login</button>
 				<div v-show="loginVisible" id="loginDropdown" class="dropdown-content">

@@ -76,6 +76,10 @@ var app;
 					lat = snapshot.val()['lat'];
 	
 				});
+				console.log(count);
+				console.log(name);
+				console.log(lon);
+				console.log(lat);
 				firebase.database().ref('clubs/' + club).set({
 
 					'count': count,
