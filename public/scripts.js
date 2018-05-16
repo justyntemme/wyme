@@ -1,5 +1,5 @@
 var app;
-(function() {
+(function mapLoaded() {
 	app = new Vue({
 		el: '#app',
 		data: {
@@ -132,4 +132,4 @@ var app;
 		}
 	});
 
-})();
+}
