@@ -37,8 +37,6 @@ var app;
 					radius: 50,
 					dissipating: true
 				});
-
-
 			},
 			initLogin: function() {
 				var v = this;
@@ -68,7 +66,6 @@ var app;
 				window.document.addEventListener("DOMContentLoaded", function(event) {
 					ui.start('#firebaseui-auth-container', uiConfig);
 	 			});
-				
 			},
 			checkIn: function(club) {
 				console.log("checking In")
@@ -81,7 +78,6 @@ var app;
 					lat = snapshot.val()['lat'];
 	
 				});
-
 				firebase.database().ref('clubs/' + club).set({
 
 					'count': count,
@@ -90,7 +86,6 @@ var app;
 					'lat': lat
 
 				});
-		
 			},
 			updateMaps: function() {
 				var v = this;
@@ -132,8 +127,6 @@ var app;
 			  };
 			firebase.initializeApp(config);
 			this.initLogin();
-
-			
 			const promise = this.getClubs();
 			promise.then(this.initMap, null);
 		}
