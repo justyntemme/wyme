@@ -5,7 +5,7 @@ var app;
 		data: {
 			loginVisible: false,
 			checkinVisible: false,
-			loggedIn: true,
+			loggedIn: false,
 			user: firebase.auth.user, 
 			heatPoints: new google.maps.MVCArray(),
 			clubs: 
