@@ -4,6 +4,7 @@
 }
 
 .dropbtn {
+	margin-top: 5px;
 	display: block;
 	width: 100%;
 	background-color: #3498DB;
@@ -12,7 +13,6 @@
 	font-size: 16px;
 	border: none;
 	cursor: pointer;
-	margin-top: 5px !important;
 }
 
 .dropbtn:hover,
