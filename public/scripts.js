@@ -1,6 +1,5 @@
 var app;
 (function() {
-
 	app = new Vue({
 		el: '#app',
 		data: {
@@ -68,7 +67,6 @@ var app;
 	 			});
 			},
 			checkIn: function(club) {
-				console.log("checking In")
 				clubObj = firebase.database().ref('clubs/'+ club);
 				clubObj.on('value', function(snapshot){
 					console.log(snapshot.val()['name'] + " clicked");
@@ -101,13 +99,11 @@ var app;
 				}
 			},
 			getClubs: function(){
-				console.log("getting clubs")
 				return new Promise((resolve, reject) => {
 				var v = this;
 				dbclubs = firebase.database().ref('clubs/');
 				dbclubs.on('value', function(snapshot){
 					for (var club in snapshot.val()) {
-						console.log(snapshot.val())
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
 						app.updateMaps();
 					} 
