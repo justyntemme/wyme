@@ -11,9 +11,10 @@
 		<header>
 			<div id="top-header">
 				<div v-show="loggedIn" id="check-in">
-					<button v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="dropbtn center">Check In</button>
-						<div v-for="club in clubs">
-
+					<transition name="fade">
+						<button v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="dropbtn center">Check In</button>
+					</transition>	
+					<div v-for="club in clubs">
 					<transition name="fade">
 								<button v-if="checkinVisible" v-on:click="checkIn(club.name)" class="dropbtn center">vote for {{ club.name}} </button>
 					</transition>
@@ -21,10 +22,15 @@
 				</div>
 			</div>
 
-				<button v-on:click="loginVisible = !loginVisible" v-show="!loggedIn" id="loginBtn" class="dropbtn center">Login</button>
+				<transition name="fade">
+					<button v-on:click="loginVisible = !loginVisible" v-show="!loggedIn" id="loginBtn" class="dropbtn center">Login</button>
+				</transition>
+			
+				<transition name="fade">
 				<div v-show="loginVisible" id="loginDropdown" class="dropdown-content">
 					<div id="firebaseui-auth-container"></div>
 				</div>
+				</transition>
 			</div>
 		</header>
 

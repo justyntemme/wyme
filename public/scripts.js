@@ -4,7 +4,7 @@ var app;
 		el: '#app',
 		data: {
 			loginVisible: false,
-			checkinVisible: true,
+			checkinVisible: false,
 			loggedIn: true,
 			user: firebase.auth.user, 
 			heatPoints: new google.maps.MVCArray(),
