@@ -126,9 +126,9 @@ var app;
 				messagingSenderId: "831469219617"
 			  };
 			firebase.initializeApp(config);
-			this.initLogin();
 			const promise = this.getClubs();
 			promise.then(this.initMap, null);
+			this.initLogin();
 		}
 	});
 
