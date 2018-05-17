@@ -123,20 +123,21 @@ function mapLoaded() {
 			},
 			initializeFirebase: function() {
 				return new Promise((resolve, reject) => {
+					var config = {
+						apiKey: "AIzaSyBBBwB7S6ekYD-oxLPWFu1G7CkKGTXdw-Q",
+						authDomain: "wyme-wichita.firebaseapp.com",
+						databaseURL: "https://wyme-wichita.firebaseio.com",
+						projectId: "wyme-wichita",
+						storageBucket: "wyme-wichita.appspot.com",
+						messagingSenderId: "831469219617"
+					  };
 					 firebase.initializeApp(config);
 					resolve("SUCCESS");
 				});
 			},
 		},
 		mounted: function() {
-			var config = {
-				apiKey: "AIzaSyBBBwB7S6ekYD-oxLPWFu1G7CkKGTXdw-Q",
-				authDomain: "wyme-wichita.firebaseapp.com",
-				databaseURL: "https://wyme-wichita.firebaseio.com",
-				projectId: "wyme-wichita",
-				storageBucket: "wyme-wichita.appspot.com",
-				messagingSenderId: "831469219617"
-			  };
+			
 			const promise = this.initializeFirebase();
 			const promise_clubs = promise.then(this.getClubs());
 			const promise_map = promise_clubs.then(this.initMap, null);
