@@ -21,6 +21,7 @@ function mapLoaded() {
 					var lon = v.clubs[key].lon;
 					var i = 0;
 					while (i < this.clubs[key].count) {
+						console.log("updating map with" + key)
 						v.heatPoints.push(new google.maps.LatLng(lat,lon));
 						// old method not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, lon))
 						i++;
