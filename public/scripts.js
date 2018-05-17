@@ -17,7 +17,6 @@ function mapLoaded() {
 				var v = this;
 				console.log(v.user.uid)
 				firebase.database().ref('users/' + v.user.uid).set({
-					'userID': firebase.auth().currentUser.getIdToken(true),
 					'club':""
 				});
 
