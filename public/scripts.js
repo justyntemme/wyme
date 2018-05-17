@@ -14,14 +14,12 @@ function mapLoaded() {
 		methods: {
 			initMap: function() {
 				var v = this;
-				console.log("init map")
 				return new Promise((resolve, reject) => {
 				for (var key in v.clubs) {
 					var lat = v.clubs[key].lat;
 					var lon = v.clubs[key].lon;
 					var i = 0;
 					while (i < v.clubs[key].count) {
-						console.log("updating map with" + key)
 						v.heatPoints.push(new google.maps.LatLng(lat,lon));
 						// old method not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, lon))
 						i++;
@@ -79,7 +77,6 @@ function mapLoaded() {
 					'name': v.clubs[club]['name'],
 					'lon': v.clubs[club]['lon'],
 					'lat': v.clubs[club]['lat']
-	
 			});
 			},
 			updateMaps: function() {
@@ -95,7 +92,6 @@ function mapLoaded() {
 					while (i < v.clubs[key]['count']) {
 						Vue.set(v.heatPoints,(v.heatPoints.length + 1), new google.maps.LatLng(lat, lon));
 						//this.heatPoints.push(new google.maps.LatLng(lat,lon));
-						// not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, (lon - (i *.0001))))
 						i++;
 					}
 					console.log(v.heatPoints);
@@ -105,13 +101,12 @@ function mapLoaded() {
 			},
 			getClubs: function(){
 				var v = this;
-				console.log("getting clubs")
 				return new Promise((resolve, reject) => {
 				dbclubs = firebase.database().ref('clubs/').once('value').then(function(snapshot){
 					for (var club in snapshot.val()) {
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
-		
-					} 
+					}
+					console.log("clubs written") 
 					resolve("SUCCESS");
 				});
 			});
@@ -133,7 +128,6 @@ function mapLoaded() {
 		},
 		mounted: function() {
 			var v = this;
-			
 			const promise = v.initializeFirebase();
 			const promise_clubs = promise.then(v.getClubs());
 			const promise_map = promise_clubs.then(v.updateMaps());
@@ -141,5 +135,4 @@ function mapLoaded() {
 			promise_map.then(v.initLogin());
 		}
 	});
-
 }
