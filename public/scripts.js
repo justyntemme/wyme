@@ -98,6 +98,7 @@ function mapLoaded() {
 			checkIn: function(club) {
 				var v = this;
 				v.checkinVisible = false;
+				v.selectedClub = club;
 				firebase.database().ref('clubs/' + club).set({
 					'count': (v.clubs[club]['count'] + 1 ),
 					'name': v.clubs[club]['name'],
