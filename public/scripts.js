@@ -114,10 +114,12 @@ function mapLoaded() {
 				return new Promise((resolve, reject) => {
 				var v = this;
 				dbclubs = firebase.database().ref('clubs/');
+
 				dbclubs.on('value', function(snapshot){
+					console.log(snapshot.val());
 					for (var club in snapshot.val()) {
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
-						console.log(snapshot.val());
+					
 						app.updateMaps();
 					} 
 				resolve("SUCCESS");
