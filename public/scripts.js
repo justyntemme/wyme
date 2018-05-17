@@ -86,7 +86,7 @@ function mapLoaded() {
 					console.log("updating maps");
 					console.log(this.clubs);
 				var v = this;
-				for (var key in v.clubs) {
+				for (var key in v.clubs.ob.value) {
 					console.log(key);
 					var lat = this.clubs[key].lat;
 					var lon = this.clubs[key].lon;
