@@ -101,7 +101,9 @@ function mapLoaded() {
 				return new Promise((resolve, reject) => {
 				dbclubs = firebase.database().ref('clubs/');
 				dbclubs.once('value').then(function(snapshot) {
+					for (var club in snapshot.val()){
 					Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
+					}
 					v.initMap();
 				});
 				dbclubs.on('value', function(snapshot){
