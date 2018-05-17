@@ -137,7 +137,7 @@ function mapLoaded() {
 				storageBucket: "wyme-wichita.appspot.com",
 				messagingSenderId: "831469219617"
 			  };
-			const promise = initializeFirebase();
+			const promise = this.initializeFirebase();
 			const promise_clubs = promise.then(this.getClubs());
 			const promise_map = promise_clubs.then(this.initMap, null);
 			promise_map.then(this.initLogin());
