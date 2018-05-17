@@ -134,7 +134,7 @@ function mapLoaded() {
 			
 			const promise = this.initializeFirebase();
 			const promise_clubs = promise.then(this.getClubs());
-			const promise_map = promise_clubs.then(this.updateMaps(), null);
+			const promise_map = promise_clubs.then(this.updateMaps());
 			promise_map.then(this.initMap());
 			promise_map.then(this.initLogin());
 		}
