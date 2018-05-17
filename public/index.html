@@ -16,7 +16,8 @@
 					</transition>	
 					<div v-for="club in clubs">
 					<transition-group name="fade">
-								<button v-if="checkinVisible" v-if="club.name != slectedClub" key="club.name" v-on:click="checkIn(club.name)" class="voteDropBtn center">vote for {{ club.name}} </button>
+							<button v-if="checkinVisible && club.name != selectedClub" key="club.name" v-on:click="checkIn(club.name)" class="voteDropBtn center">Checkin {{ club.name}} </button>
+							<button v-if="selectedClub == club.name && checkinVisible" key="club.name" v-on:click="checkOut(club.name)" class="checkoutDropBtn center">Checkout {{ club.name}} </button>
 					</transition>
 							</div>
 				</div>

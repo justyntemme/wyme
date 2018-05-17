@@ -5,18 +5,25 @@ function mapLoaded() {
 		data: {
 			loginVisible: false,
 			checkinVisible: false,
-			loggedIn: true,
-			selectedClub: "",
+			loggedIn: false,
+			selectedClub: "Club Rodeo",
 			user: firebase.auth.user, 
 			heatPoints: new google.maps.MVCArray(),
 			clubs: 
 				{}
 		},
 		methods: {
+			checkOut: function(club) {
+				var v = this;
+				firebase.database().ref('users/' + v.user.uid).set({
+					'id': firebase.auth().currentUser.getIdToken(true),
+					'club':""
+				});
+
+			},
 			setSelectedClub: function(user, club) {
 				var v = this;
-
-				firebase.database().ref('users/' + user).set({
+				firebase.database().ref('users/' + v.user.uid).set({
 					'id': firebase.auth().currentUser.getIdToken(true),
 					'club':club
 				});
@@ -24,7 +31,7 @@ function mapLoaded() {
 			getSelectedClub: function(user, club) {
 				var v = this;
 				//logic
-				firebase.database().ref('users/' + user).set({
+				firebase.database().ref('users/' + v.user.uid).set({
 					'id': firebase.auth().currentUser.getIdToken(true),
 					'club': club
 			});

@@ -23,7 +23,7 @@
 }
 .voteDropBtn {
 	display: block;
-	width: 100%;
+	width: 80%;
 	background-color: #3498DB;
 	color: white;
 	padding: 16px;
@@ -84,4 +84,18 @@
 .fade-enter, .fade-leave-to {
 	opacity: 0;
 	transform: translateY(30px);
+}
+
+.checkedIn {}
+
+.checkoutDropBtn{
+	background-color:  #ff5c33;
+	display: block;
+	width: 80%;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	margin-top: 2px;
 }
