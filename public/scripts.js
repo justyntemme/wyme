@@ -132,12 +132,13 @@ function mapLoaded() {
 			},
 		},
 		mounted: function() {
+			var v = this;
 			
-			const promise = this.initializeFirebase();
-			const promise_clubs = promise.then(this.getClubs());
-			const promise_map = promise_clubs.then(this.updateMaps());
-			promise_map.then(this.initMap());
-			promise_map.then(this.initLogin());
+			const promise = v.initializeFirebase();
+			const promise_clubs = promise.then(v.getClubs());
+			const promise_map = promise_clubs.then(v.updateMaps());
+			promise_map.then(v.initMap());
+			promise_map.then(v.initLogin());
 		}
 	});
 
