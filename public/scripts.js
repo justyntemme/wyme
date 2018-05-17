@@ -113,17 +113,13 @@ function mapLoaded() {
 				console.log("getting clubs")
 				return new Promise((resolve, reject) => {
 				var v = this;
-				dbclubs = firebase.database().ref('clubs/');
-
-				dbclubs.on('value', function(snapshot){
-					console.log(snapshot.val());
+				dbclubs = firebase.database().ref('clubs/').once('value').then(function(snapshot){
 					for (var club in snapshot.val()) {
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
-					
+						console.log(snapshot.val());
 						app.updateMaps();
-						resolve("SUCCESS");
 					} 
-
+				resolve("SUCCESS");
 				});
 			});
 			},
