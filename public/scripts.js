@@ -83,12 +83,13 @@ function mapLoaded() {
 			console.log(v.clubs[club]['count'])
 			firebase.database().ref('clubs/' + club).set({
 
-				'count': v.clubs[club]['count'],
+				'count': (v.clubs[club]['count'] + 1),
 				'name': v.clubs[club]['name'],
 				'lon': v.clubs[club]['lon'],
 				'lat': v.clubs[club]['lat']
 
 		});
+		console.log(v.clubs[club]['count'])
 			},
 			updateMaps: function() {
 				return new Promise((resolve, reject) => {
