@@ -20,7 +20,7 @@ function mapLoaded() {
 					var lat = v.clubs[key].lat;
 					var lon = v.clubs[key].lon;
 					var i = 0;
-					while (i < this.clubs[key].count) {
+					while (i < v.clubs[key].count) {
 						console.log("updating map with" + key)
 						v.heatPoints.push(new google.maps.LatLng(lat,lon));
 						// old method not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, lon))
@@ -33,7 +33,7 @@ function mapLoaded() {
 				});
 				
 				heatmap = new window.google.maps.visualization.HeatmapLayer({
-					data: this.heatPoints,
+					data: v.heatPoints,
 					map: map,
 					maxIntensity: 100,
 					radius: 50,
@@ -86,19 +86,19 @@ function mapLoaded() {
 				var v = this;
 				return new Promise((resolve, reject) => {
 					console.log("updating maps");
-					console.log(this.clubs);
+					console.log(v.clubs);
 				for (var key in v.clubs) {
 					console.log(key);
-					var lat = this.clubs[key].lat;
-					var lon = this.clubs[key].lon;
-					var i = this.heatPoints.length;
-					while (i < this.clubs[key]['count']) {
-						Vue.set(this.heatPoints,(this.heatPoints.length + 1), new google.maps.LatLng(lat, lon));
+					var lat = v.clubs[key].lat;
+					var lon = v.clubs[key].lon;
+					var i = v.heatPoints.length;
+					while (i < v.clubs[key]['count']) {
+						Vue.set(v.heatPoints,(v.heatPoints.length + 1), new google.maps.LatLng(lat, lon));
 						//this.heatPoints.push(new google.maps.LatLng(lat,lon));
 						// not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, (lon - (i *.0001))))
 						i++;
 					}
-					console.log(this.heatPoints);
+					console.log(v.heatPoints);
 				}
 				resolve("SUCCESS");
 				});
