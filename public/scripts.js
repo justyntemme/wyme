@@ -15,7 +15,7 @@ function mapLoaded() {
 		methods: {
 			checkOut: function(club) {
 				var v = this;
-				console.log(v.user.id)
+				console.log(v.user.uid)
 				firebase.database().ref('users/' + v.user.uid).set({
 					'id': firebase.auth().currentUser.getIdToken(true),
 					'club':""
