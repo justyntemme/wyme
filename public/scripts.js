@@ -72,6 +72,7 @@ function mapLoaded() {
 					ui.start('#firebaseui-auth-container', uiConfig);
 			},
 			checkIn: function(club) {
+				var v = this;
 				firebase.database().ref('clubs/' + club).set({
 					'count': (v.clubs[club]['count'] + 1 ),
 					'name': v.clubs[club]['name'],
