@@ -88,8 +88,8 @@ function mapLoaded() {
 					var i = v.heatPoints.length;
 					//while (v.heatPoints.length > 0) {v.heatPoints.pop();} 
 					while (i < v.clubs[key]['count']) {
-						//Vue.set(v.heatPoints,(v.heatPoints.length + i), new google.maps.LatLng(lat, lon));
-						this.heatPoints.push(new google.maps.LatLng(lat,lon));
+						Vue.set(v.heatPoints,(v.heatPoints.length + 1), new google.maps.LatLng(lat, lon));
+						//this.heatPoints.push(new google.maps.LatLng(lat,lon));
 						i++;
 					}
 					console.log(v.heatPoints);
