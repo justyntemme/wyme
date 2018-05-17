@@ -95,6 +95,7 @@ function mapLoaded() {
 				});
 			},
 			updateMaps: function() {
+				return new Promise((resolve, reject) => {
 				var v = this;
 				for (var key in v.clubs) {
 					console.log("this is v.clubs");
@@ -108,6 +109,8 @@ function mapLoaded() {
 						i++;
 					}
 				}
+				resolve("SUCCESS");
+				});
 			},
 			getClubs: function(){
 				console.log("getting clubs")
@@ -117,9 +120,10 @@ function mapLoaded() {
 					for (var club in snapshot.val()) {
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
 						console.log(snapshot.val());
-						app.updateMaps();
+		
 					} 
-				resolve("SUCCESS");
+					const updateMapsPromise = app.updateMaps();
+					updateMapsPromise.then(resolve("SUCCESS"));
 				});
 			});
 			},
