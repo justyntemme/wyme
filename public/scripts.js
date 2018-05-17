@@ -82,10 +82,7 @@ function mapLoaded() {
 			updateMaps: function() {
 				var v = this;
 				return new Promise((resolve, reject) => {
-					console.log("updating maps");
-					console.log(v.clubs);
 				for (var key in v.clubs) {
-					console.log(key);
 					var lat = v.clubs[key].lat;
 					var lon = v.clubs[key].lon;
 					var i = v.heatPoints.length;
@@ -103,6 +100,10 @@ function mapLoaded() {
 				var v = this;
 				return new Promise((resolve, reject) => {
 				dbclubs = firebase.database().ref('clubs/');
+				dbclubs.once('value').then(function(snapshot) {
+					Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
+					v.initMap();
+				});
 				dbclubs.on('value', function(snapshot){
 					for (var club in snapshot.val()) {
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
@@ -111,7 +112,6 @@ function mapLoaded() {
 					console.log("clubs written")
 				});
 
-					v.initMap();
 					resolve("SUCCESS");
 			});
 			},
