@@ -19,7 +19,8 @@ function mapLoaded() {
 				firebase.database().ref('users/' + v.user.uid).set({
 					'club':""
 				});
-				this.selectedClub = "";
+				v.selectedClub = "";
+				console.log(v.selectedClub);
 
 			},
 			setSelectedClub: function(user, club) {
@@ -102,6 +103,9 @@ function mapLoaded() {
 					'name': v.clubs[club]['name'],
 					'lon': v.clubs[club]['lon'],
 					'lat': v.clubs[club]['lat']
+			});
+			firebase.database().ref('users/' + v.user.uid).set({
+				'club': club
 			});
 			},
 			updateMaps: function() {
