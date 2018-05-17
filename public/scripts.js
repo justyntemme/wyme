@@ -23,20 +23,6 @@ function mapLoaded() {
 				console.log(v.selectedClub);
 
 			},
-			setSelectedClub: function(user, club) {
-				var v = this;
-				firebase.database().ref('users/' + v.user.uid).set({
-					'club':club
-				});
-			},
-			getSelectedClub: function(user, club) {
-				var v = this;
-				//logic
-				firebase.database().ref('users/' + v.user.uid).set({
-					'club': club
-			});
-				v.selectedClub = club;
-			},
 			initMap: function() {
 				var v = this;
 				return new Promise((resolve, reject) => {
