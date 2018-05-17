@@ -106,7 +106,8 @@ function mapLoaded() {
 					for (var club in snapshot.val()) {
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
 					}
-					console.log("clubs written") 
+					console.log("clubs written")
+					v.initMap();
 					resolve("SUCCESS");
 				});
 			});
@@ -130,8 +131,6 @@ function mapLoaded() {
 			var v = this;
 			const promise = v.initializeFirebase();
 			const promise_clubs = promise.then(v.getClubs());
-			const promise_map = promise_clubs.then(v.updateMaps());
-			promise_map.then(v.initMap());
 			promise_map.then(v.initLogin());
 		}
 	});
