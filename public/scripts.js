@@ -121,12 +121,12 @@ function mapLoaded() {
 				});
 			});
 			},
-		},
-		initializeFirebase: function() {
-			return new Promise((resolve, reject) => {
-			 	firebase.initializeApp(config);
-				resolve("SUCCESS");
-			});
+			initializeFirebase: function() {
+				return new Promise((resolve, reject) => {
+					 firebase.initializeApp(config);
+					resolve("SUCCESS");
+				});
+			},
 		},
 		mounted: function() {
 			var config = {
