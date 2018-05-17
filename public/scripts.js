@@ -19,12 +19,12 @@ function mapLoaded() {
 				firebase.database().ref('users/' + v.user.uid).set({
 					'club':""
 				});
+				this.selectedClub = "";
 
 			},
 			setSelectedClub: function(user, club) {
 				var v = this;
 				firebase.database().ref('users/' + v.user.uid).set({
-					'id': firebase.auth().currentUser.getIdToken(true),
 					'club':club
 				});
 			},
@@ -32,7 +32,6 @@ function mapLoaded() {
 				var v = this;
 				//logic
 				firebase.database().ref('users/' + v.user.uid).set({
-					'id': firebase.auth().currentUser.getIdToken(true),
 					'club': club
 			});
 				v.selectedClub = club;
