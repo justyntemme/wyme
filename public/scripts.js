@@ -90,7 +90,7 @@ function mapLoaded() {
 					var lon = this.clubs[key].lon;
 					var i = this.heatPoints.length;
 					while (i < this.clubs[key].count) {
-						this.heatPoints.push(new google.maps.LatLng((lat + (.0001 + i)),(lon + (.0001 * i))));
+						this.heatPoints.push(new google.maps.LatLng(lat,lon));
 						// not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, (lon - (i *.0001))))
 						i++;
 					}
