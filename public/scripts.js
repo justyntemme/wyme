@@ -131,7 +131,7 @@ function mapLoaded() {
 			var v = this;
 			const promise = v.initializeFirebase();
 			const promise_clubs = promise.then(v.getClubs());
-			promise_map.then(v.initLogin());
+			promise_clubs.then(v.initLogin());
 		}
 	});
 }
