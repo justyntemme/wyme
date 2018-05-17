@@ -107,7 +107,7 @@ function mapLoaded() {
 					for (var club in snapshot.val()) {
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
 					}
-					updateMaps();
+					v.updateMaps();
 					console.log("clubs written")
 				});
 
