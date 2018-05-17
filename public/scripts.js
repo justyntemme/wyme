@@ -13,6 +13,7 @@ function mapLoaded() {
 		},
 		methods: {
 			initMap: function() {
+				return new Promise((resolve, reject) => {
 				var v = this;
 				for (var key in v.clubs) {
 					var lat = this.clubs[key].lat;
@@ -36,6 +37,10 @@ function mapLoaded() {
 					radius: 50,
 					dissipating: true
 				});
+				if (map) {
+					resolve("SUCCESS");
+				}
+			});
 			},
 			initLogin: function() {
 				var v = this;
@@ -114,6 +119,12 @@ function mapLoaded() {
 			});
 			},
 		},
+		initializeFirebase: function() {
+			return new Promise((resolve, reject) => {
+			 	firebase.initializeApp(config);
+				resolve("SUCCESS");
+			});
+		},
 		mounted: function() {
 			var config = {
 				apiKey: "AIzaSyBBBwB7S6ekYD-oxLPWFu1G7CkKGTXdw-Q",
@@ -123,10 +134,10 @@ function mapLoaded() {
 				storageBucket: "wyme-wichita.appspot.com",
 				messagingSenderId: "831469219617"
 			  };
-			firebase.initializeApp(config);
-			const promise = this.getClubs();
-			promise.then(this.initMap, null);
-			this.initLogin();
+			const promise = initializeFirebase();
+			const promise_clubs = promise.then(this.getClubs());
+			const promise_map = promise_clubs.then(this.initMap, null);
+			promise_map.then(this.initLogin());
 		}
 	});
 
