@@ -6,7 +6,7 @@ function mapLoaded() {
 			loginVisible: false,
 			checkinVisible: false,
 			loggedIn: false,
-			selectedClub: "Club Rodeo",
+			selectedClub: "",
 			user: firebase.auth.user, 
 			heatPoints: new google.maps.MVCArray(),
 			clubs: 
