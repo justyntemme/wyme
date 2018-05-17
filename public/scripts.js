@@ -84,7 +84,7 @@ function mapLoaded() {
 			updateMaps: function() {
 				return new Promise((resolve, reject) => {
 					console.log("updating maps");
-					console.log(v.clubs)
+					console.log(this.clubs);
 				var v = this;
 				for (var key in v.clubs) {
 					console.log(key);
