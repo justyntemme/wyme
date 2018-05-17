@@ -102,14 +102,17 @@ function mapLoaded() {
 			getClubs: function(){
 				var v = this;
 				return new Promise((resolve, reject) => {
-				dbclubs = firebase.database().ref('clubs/').once('value').then(function(snapshot){
+				dbclubs = firebase.database().ref('clubs/')
+				dbclubs.on('value').then(function(snapshot){
 					for (var club in snapshot.val()) {
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
 					}
+					updateMaps();
 					console.log("clubs written")
+				});
+
 					v.initMap();
 					resolve("SUCCESS");
-				});
 			});
 			},
 			initializeFirebase: function() {
