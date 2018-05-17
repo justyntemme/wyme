@@ -86,10 +86,11 @@ function mapLoaded() {
 					console.log("updating maps");
 				var v = this;
 				for (var key in v.clubs) {
+					console.log(key);
 					var lat = this.clubs[key].lat;
 					var lon = this.clubs[key].lon;
 					var i = this.heatPoints.length;
-					while (i < this.clubs[key].count) {
+					while (i < this.clubs[key]['count']) {
 						Vue.set(this.heatPoints,(this.heatPoints.length + 1), new google.maps.LatLng(lat, lon));
 						//this.heatPoints.push(new google.maps.LatLng(lat,lon));
 						// not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, (lon - (i *.0001))))
