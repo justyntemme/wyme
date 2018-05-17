@@ -32,6 +32,10 @@
 	cursor: pointer;
 
 }
+.voteDropBtn:hover,
+.voteDropBtn:focus {
+	background-color: #2980B9;
+}
 
 .dropbtn:hover,
 .dropbtn:focus {
