@@ -81,7 +81,7 @@ function mapLoaded() {
 			});
 
 			console.log(v.clubs[club]['count'])
-			Vue.set(v.clubs, v.clubs[club][name], (v.clubs[club]['count'] + 1 );
+			Vue.set(v.clubs, v.clubs[club][name], (v.clubs[club]['count'] + 1 ));
 			firebase.database().ref('clubs/' + club).set({
 
 				'count': (v.clubs[club]['count'] ),
