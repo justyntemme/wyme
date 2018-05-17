@@ -109,8 +109,7 @@ function mapLoaded() {
 						console.log(snapshot.val());
 		
 					} 
-					const updateMapsPromise = app.updateMaps();
-					updateMapsPromise.then(resolve("SUCCESS"));
+					resolve("SUCCESS");
 				});
 			});
 			},
@@ -134,6 +133,7 @@ function mapLoaded() {
 			const promise = this.initializeFirebase();
 			const promise_clubs = promise.then(this.getClubs());
 			const promise_map = promise_clubs.then(this.initMap, null);
+			promise_map.then(this.updateMaps());
 			promise_map.then(this.initLogin());
 		}
 	});
