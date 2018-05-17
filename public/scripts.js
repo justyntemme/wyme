@@ -121,8 +121,9 @@ function mapLoaded() {
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
 					
 						app.updateMaps();
+						resolve("SUCCESS");
 					} 
-				resolve("SUCCESS");
+
 				});
 			});
 			},
