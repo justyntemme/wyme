@@ -97,6 +97,8 @@ function mapLoaded() {
 			updateMaps: function() {
 				var v = this;
 				for (var key in v.clubs) {
+					console.log("this is v.clubs");
+					console.log(v.clubs)
 					var lat = this.clubs[key].lat;
 					var lon = this.clubs[key].lon;
 					var i = this.heatPoints.length;
@@ -115,6 +117,7 @@ function mapLoaded() {
 				dbclubs.on('value', function(snapshot){
 					for (var club in snapshot.val()) {
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
+						console.log(snapshot.val());
 						app.updateMaps();
 					} 
 				resolve("SUCCESS");
