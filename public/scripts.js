@@ -6,12 +6,30 @@ function mapLoaded() {
 			loginVisible: false,
 			checkinVisible: false,
 			loggedIn: true,
+			selectedClub: "",
 			user: firebase.auth.user, 
 			heatPoints: new google.maps.MVCArray(),
 			clubs: 
 				{}
 		},
 		methods: {
+			setSelectedClub: function(user, club) {
+				var v = this;
+
+				firebase.database().ref('users/' + user).set({
+					'id': firebase.auth().currentUser.getIdToken(true),
+					'club':club
+				});
+			},
+			getSelectedClub: function(user, club) {
+				var v = this;
+				//logic
+				firebase.database().ref('users/' + user).set({
+					'id': firebase.auth().currentUser.getIdToken(true),
+					'club': club
+			});
+				v.selectedClub = club;
+			},
 			initMap: function() {
 				var v = this;
 				return new Promise((resolve, reject) => {
@@ -114,7 +132,7 @@ function mapLoaded() {
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
 					}
 					v.updateMaps();
-					console.log("clubs written")
+					console.log("clubs written");
 				});
 
 					resolve("SUCCESS");
