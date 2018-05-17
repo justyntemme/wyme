@@ -62,9 +62,7 @@ function mapLoaded() {
 					],
 					tosUrl: ''
 				};
-				window.document.addEventListener("DOMContentLoaded", function(event) {
 					ui.start('#firebaseui-auth-container', uiConfig);
-	 			});
 			},
 			checkIn: function(club) {
 				clubObj = firebase.database().ref('clubs/'+ club);
