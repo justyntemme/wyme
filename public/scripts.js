@@ -13,6 +13,7 @@ function mapLoaded() {
 		},
 		methods: {
 			initMap: function() {
+				console.log("init map")
 				return new Promise((resolve, reject) => {
 				var v = this;
 				for (var key in v.clubs) {
@@ -43,6 +44,7 @@ function mapLoaded() {
 			});
 			},
 			initLogin: function() {
+				console.log("init login");
 				var v = this;
 				var authObject = window.firebase.auth();
 				var ui = new window.firebaseui.auth.AuthUI(window.firebase.auth());
@@ -106,6 +108,7 @@ function mapLoaded() {
 				}
 			},
 			getClubs: function(){
+				console.log("getting clubs")
 				return new Promise((resolve, reject) => {
 				var v = this;
 				dbclubs = firebase.database().ref('clubs/');
