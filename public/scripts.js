@@ -32,7 +32,6 @@ function mapLoaded() {
 					var i = 0;
 					while (i < v.clubs[key].count) {
 						v.heatPoints.push(new google.maps.LatLng(lat,lon));
-						// old method not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, lon))
 						i++;
 					}
 				}
