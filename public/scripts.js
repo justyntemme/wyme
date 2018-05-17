@@ -74,18 +74,18 @@ function mapLoaded() {
 			checkIn: function(club) {
 				var v = this;
 				clubObj = firebase.database().ref('clubs/'+ club);
-				clubObj.on('value', function(snapshot){
+				clubObj.once('value').then( function(snapshot){
 					console.log(snapshot.val()['name'] + " clicked");
 					Vue.set(v.clubs,snapshot.val()['name']['count'],(snapshot.val()['count'] + 1 ));
-				});
-				firebase.database().ref('clubs/' + club).set({
+					firebase.database().ref('clubs/' + club).set({
 
-					'count': v.clubs[club]['count'],
-					'name': v.clubs[club]['name'],
-					'lon': v.clubs[club]['lon'],
-					'lat': v.clubs[club]['lat']
+						'count': v.clubs[club]['count'],
+						'name': v.clubs[club]['name'],
+						'lon': v.clubs[club]['lon'],
+						'lat': v.clubs[club]['lat']
 
 				});
+			});
 			},
 			updateMaps: function() {
 				return new Promise((resolve, reject) => {
