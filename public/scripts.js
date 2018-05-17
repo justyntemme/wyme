@@ -17,11 +17,11 @@ function mapLoaded() {
 				return new Promise((resolve, reject) => {
 				var v = this;
 				for (var key in v.clubs) {
-					var lat = this.clubs[key].lat;
-					var lon = this.clubs[key].lon;
+					var lat = v.clubs[key].lat;
+					var lon = v.clubs[key].lon;
 					var i = 0;
 					while (i < this.clubs[key].count) {
-						this.heatPoints.push(new google.maps.LatLng(lat,lon));
+						v.heatPoints.push(new google.maps.LatLng(lat,lon));
 						// old method not needed Vue.set(this.heatPoints,(this.heatPoints.length + i), new google.maps.LatLng(lat, lon))
 						i++;
 					}
