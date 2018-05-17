@@ -81,12 +81,13 @@ function mapLoaded() {
 			},
 			updateMaps: function() {
 				var v = this;
+
+				while (v.heatPoints.length > 0) {v.heatPoints.pop();} 
 				return new Promise((resolve, reject) => {
 				for (var key in v.clubs) {
 					var lat = v.clubs[key].lat;
 					var lon = v.clubs[key].lon;
 					var i = v.heatPoints.length;
-					while (v.heatPoints.length > 0) {v.heatPoints.pop();} 
 					while (i < v.clubs[key]['count']) {
 						//Vue.set(v.heatPoints,(v.heatPoints.length + 1), new google.maps.LatLng(lat, lon));
 						this.heatPoints.push(new google.maps.LatLng(lat,lon));
