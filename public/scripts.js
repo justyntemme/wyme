@@ -13,9 +13,9 @@ function mapLoaded() {
 		},
 		methods: {
 			initMap: function() {
+				var v = this;
 				console.log("init map")
 				return new Promise((resolve, reject) => {
-				var v = this;
 				for (var key in v.clubs) {
 					var lat = v.clubs[key].lat;
 					var lon = v.clubs[key].lon;
@@ -45,8 +45,8 @@ function mapLoaded() {
 			});
 			},
 			initLogin: function() {
-				console.log("init login");
 				var v = this;
+				console.log("init login");
 				var authObject = window.firebase.auth();
 				var ui = new window.firebaseui.auth.AuthUI(window.firebase.auth());
 				var uiConfig = {
@@ -83,10 +83,10 @@ function mapLoaded() {
 			});
 			},
 			updateMaps: function() {
+				var v = this;
 				return new Promise((resolve, reject) => {
 					console.log("updating maps");
 					console.log(this.clubs);
-				var v = this;
 				for (var key in v.clubs) {
 					console.log(key);
 					var lat = this.clubs[key].lat;
@@ -104,9 +104,9 @@ function mapLoaded() {
 				});
 			},
 			getClubs: function(){
+				var v = this;
 				console.log("getting clubs")
 				return new Promise((resolve, reject) => {
-				var v = this;
 				dbclubs = firebase.database().ref('clubs/').once('value').then(function(snapshot){
 					for (var club in snapshot.val()) {
 						Vue.set(v.clubs,snapshot.val()[club].name,snapshot.val()[club]);
