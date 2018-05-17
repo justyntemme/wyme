@@ -72,25 +72,18 @@ function mapLoaded() {
 					ui.start('#firebaseui-auth-container', uiConfig);
 			},
 			checkIn: function(club) {
+				var v = this;
 				clubObj = firebase.database().ref('clubs/'+ club);
 				clubObj.on('value', function(snapshot){
 					console.log(snapshot.val()['name'] + " clicked");
-					name = snapshot.val()['name'];
-					count = (snapshot.val()['count'] + 1);
-					lon = snapshot.val()['lon'];
-					lat = snapshot.val()['lat'];
-	
+					Vue.set(v.clubs,snapshot.val()[club].name['count'],(snapshot.val()[club][count] + 1 ));
 				});
-				console.log(count);
-				console.log(name);
-				console.log(lon);
-				console.log(lat);
 				firebase.database().ref('clubs/' + club).set({
 
-					'count': count,
-					'name': name,
-					'lon': lon,
-					'lat': lat
+					'count': v.clubs[club]['count'],
+					'name': v.clubs[club]['name'],
+					'lon': v.clubs[club]['lon'],
+					'lat': v.clubs[club]['lat']
 
 				});
 			},
