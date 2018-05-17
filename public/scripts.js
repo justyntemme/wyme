@@ -76,7 +76,7 @@ function mapLoaded() {
 				clubObj = firebase.database().ref('clubs/'+ club);
 				clubObj.on('value', function(snapshot){
 					console.log(snapshot.val()['name'] + " clicked");
-					Vue.set(v.clubs,snapshot.val()[club].name['count'],(snapshot.val()[club]['count'] + 1 ));
+					Vue.set(v.clubs,snapshot.val()[name]['count'],(snapshot.val()['count'] + 1 ));
 				});
 				firebase.database().ref('clubs/' + club).set({
 
