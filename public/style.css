@@ -37,6 +37,10 @@
 	background-color: #2980B9;
 }
 
+.voteDropBtn:active {
+	background-color: #00ff80;
+}
+
 .dropbtn:hover,
 .dropbtn:focus {
 	background-color: #2980B9;
