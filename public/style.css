@@ -90,15 +90,16 @@
 	transition: all 0.5s;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-enter, .fadeleave-to {
 	opacity: 0;
 	transform: translateY(30px);
 }
 
 .checkedIn {}
 
-#checkinBtn ::before {
-	content: '\f0d7';
+#checkinBtn::after {
+	content: "\2193";
+	left: 40%
 
 }
 
