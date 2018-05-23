@@ -10,6 +10,15 @@
 	margin-right: auto;
 }
 
+#searchBar {
+	border: 0;
+	outline: 0;
+	width: 100%;
+	background: transparent;
+	border-radius: 0px;
+	border-bottom: 1px solid black;
+}
+
 .dropbtn {
 	display: block;
 	width: 100%;

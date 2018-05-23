@@ -1,3 +1,20 @@
+function filterList() {
+var input, filter, ul, li, a, i;
+input = document.getElementById('searchBar');
+filter = input.value.toUpperCase();
+
+li = document.getElementsByClassName("voteDropBtn");
+
+for (i= 0; i < li.length; i++) {
+	if (li[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+		li[i].style.display = "block";
+	} else {
+		console.log(li[i]);
+		li[i].style.display = "none";
+	}
+}
+}
+
 var app;
 function mapLoaded() {
 	app = new Vue({
@@ -21,7 +38,6 @@ function mapLoaded() {
 				});
 				v.selectedClub = "";
 				console.log(v.selectedClub);
-
 			},
 			initMap: function() {
 				var v = this;
@@ -39,7 +55,6 @@ function mapLoaded() {
 					center: {lat:37.6872, lng: -97.3301},
 					zoom:12
 				});
-				
 				heatmap = new window.google.maps.visualization.HeatmapLayer({
 					data: v.heatPoints,
 					map: map,
@@ -96,7 +111,6 @@ function mapLoaded() {
 			},
 			updateMaps: function() {
 				var v = this;
-
 				while (v.heatPoints.length > 0) {v.heatPoints.pop();} 
 				return new Promise((resolve, reject) => {
 				for (var key in v.clubs) {
