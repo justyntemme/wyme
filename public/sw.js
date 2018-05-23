@@ -4,9 +4,8 @@ var filesToCache = [
   '/js/scripts.js',
   '/images/logo.svg',
 
-  '/offline.html’,
-
-  '/’,
+  '/offline.html',
+  '/',
 ];
 
 self.addEventListener('install', function(e) {
