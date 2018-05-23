@@ -1,10 +1,7 @@
 var cacheName = 'shell-content';
 var filesToCache = [
-  '/css/styles.css',
   '/js/scripts.js',
-  '/images/logo.svg',
 
-  '/offline.html',
   '/',
 ];
 
