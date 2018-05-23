@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 
-	<link href"stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>What's Poppin'</title>
@@ -14,9 +13,7 @@
 		<header>
 			<div id="top-header">
 				<div v-show="loggedIn" id="check-in">
-					<transition name="fade">
-						<button v-show="!checkinVisible" v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="dropbtn center">Check In</button>
-					</transition>	
+	
 					<div v-show="checkinVisible">
 						<input class="dropbtn" type="text" id="searchBar" onkeyup="filterList()"/></div>
 					</div>
@@ -36,6 +33,9 @@
 					<div id="firebaseui-auth-container"></div>
 				</div>
 				</transition>
+				<transition name="fade">
+						<button  v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="dropbtn center">Show All</button>
+					</transition>	
 			</div>
 		</header>
 		<div id="whatspoppin">

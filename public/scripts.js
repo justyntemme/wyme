@@ -7,7 +7,7 @@ li = document.getElementsByClassName("voteDropBtn");
 
 for (i= 0; i < li.length; i++) {
 	if (li[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-		li[i].style.display = "block";
+		li[i].style.display = "";
 	} else {
 		console.log(li[i]);
 		li[i].style.display = "none";
@@ -21,7 +21,7 @@ function mapLoaded() {
 		el: '#app',
 		data: {
 			loginVisible: false,
-			checkinVisible: false,
+			checkinVisible: true,
 			loggedIn: true,
 			selectedClub: "",
 			user: firebase.auth.user, 
