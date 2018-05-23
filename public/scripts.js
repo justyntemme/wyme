@@ -22,7 +22,7 @@ function mapLoaded() {
 		data: {
 			loginVisible: false,
 			checkinVisible: false,
-			loggedIn: false,
+			loggedIn: true,
 			selectedClub: "",
 			user: firebase.auth.user, 
 			heatPoints: new google.maps.MVCArray(),

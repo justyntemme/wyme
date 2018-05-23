@@ -97,6 +97,11 @@
 
 .checkedIn {}
 
+#checkinBtn ::before {
+	content: '\f0d7';
+
+}
+
 .checkoutDropBtn{
 	background-color:  #ff5c33;
 	display: block;

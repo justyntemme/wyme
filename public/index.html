@@ -13,7 +13,7 @@
 			<div id="top-header">
 				<div v-show="loggedIn" id="check-in">
 					<transition name="fade">
-						<button v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="dropbtn center">Check In</button>
+						<button v-show="!checkinVisible" v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="dropbtn center">Check In</button>
 					</transition>	
 					<div v-show="checkinVisible">
 						<input class="dropbtn" type="text" id="searchBar" onkeyup="filterList()"/></div>
