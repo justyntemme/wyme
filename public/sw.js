@@ -1,8 +1,6 @@
 var cacheName = 'shell-content';
 var filesToCache = [
-  '/js/scripts.js',
-
-  '/',
+  
 ];
 
 self.addEventListener('install', function(e) {
