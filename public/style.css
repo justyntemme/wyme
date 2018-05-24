@@ -17,6 +17,7 @@
 	background: transparent;
 	border-radius: 0px;
 	border-bottom: 1px solid black;
+	display: inline-block;
 }
 
 .dropbtn {
@@ -40,7 +41,7 @@
 	border: none;
 	cursor: pointer;
 	margin-top: 2px;
-	display: none;
+	display: block;
 
 }
 .voteDropBtn:hover,

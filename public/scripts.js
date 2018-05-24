@@ -1,13 +1,13 @@
 function filterList() {
 var input, filter, ul, li, a, i;
-input = document.getElementById('searchBar');
+input = document.getElementById('searchTextBox');
 filter = input.value.toUpperCase();
 
 li = document.getElementsByClassName("voteDropBtn");
 
 for (i= 0; i < li.length; i++) {
 	if (li[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-		li[i].style.display = "";
+		li[i].style.display = "block";
 	} else {
 		console.log(li[i]);
 		li[i].style.display = "none";

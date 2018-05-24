@@ -14,8 +14,9 @@
 			<div id="top-header">
 				<div v-show="loggedIn" id="check-in">
 	
-					<div v-show="checkinVisible">
-						<input class="dropbtn" type="text" id="searchBar" onkeyup="filterList()"/></div>
+					<div id="searchBar" v-show="loggedIn">
+						<input class="dropbtn" type="text" id="searchTextBox" onkeyup="filterList()"/>
+						<button  v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="">View Clubs</button>
 					</div>
 					<div v-for="club in clubs">
 					<transition-group name="fade">
@@ -33,9 +34,7 @@
 					<div id="firebaseui-auth-container"></div>
 				</div>
 				</transition>
-				<transition name="fade">
-						<button  v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="dropbtn center">Show All</button>
-					</transition>	
+	
 			</div>
 		</header>
 		<div id="whatspoppin">
