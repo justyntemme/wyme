@@ -14,14 +14,15 @@
 			<div id="top-header">
 				<div v-show="loggedIn" id="check-in">
 	
-					<div id="searchBar" v-show="loggedIn">
-						<input class="dropbtn" type="text" id="searchTextBox" onkeyup="filterList()"/>
-						<button  v-on:click="checkinVisible = !checkinVisible" id="checkinBtn" class="">View Clubs</button>
+					<button v-show="searchVisable"  v-on:click="toggleClubs()"  id="checkinBtn" class="checkinBtn">View Clubs</button>
+				
+					<div id="searchBar" v-show="club">
+						<input  class="dropbtn" type="text" id="searchTextBox" onkeyup="filterList()"/>
 					</div>
-					<div v-for="club in clubs">
+					<div v-for="clubS in clubs">
 					<transition-group name="fade">
-							<button v-if="checkinVisible && club.name != selectedClub" key="club.name" v-on:click="checkIn(club.name)" class="voteDropBtn center">{{ club.name}} </button>
-							<button v-if="selectedClub == club.name && checkinVisible" key="club.name" v-on:click="checkOut(club.name)" class="checkoutDropBtn center">{{ club.name}} </button>
+							<button v-if="club && club.name != selectedClub" key="clubS.name" v-on:click="checkIn(clubS.name)" class="voteDropBtn center">{{ clubS.name}} </button>
+							<button v-if="club && selectedClub == clubS.name" key="clubS.name" v-on:click="checkOut(clubS.name)" class="checkoutDropBtn center">{{ clubS.name}} </button>
 					</transition>
 							</div>
 				</div>

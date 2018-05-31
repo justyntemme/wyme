@@ -22,6 +22,8 @@ function mapLoaded() {
 		data: {
 			loginVisible: false,
 			checkinVisible: true,
+			club: false,
+			searchVisable: true,
 			loggedIn: true,
 			selectedClub: "",
 			user: firebase.auth.user, 
@@ -38,6 +40,13 @@ function mapLoaded() {
 				});
 				v.selectedClub = "";
 				console.log(v.selectedClub);
+			},
+			toggleClubs: function() {
+				v = this;
+				v.club = !v.club
+
+				v.searchVisable = !v.searchVisable;
+			
 			},
 			initMap: function() {
 				var v = this;
