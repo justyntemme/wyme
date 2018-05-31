@@ -19,8 +19,9 @@
 					<div id="searchBar" v-show="club">
 						<img id="searchImage" src="https://firebasestorage.googleapis.com/v0/b/wyme-wichita.appspot.com/o/icons8-search-50.png?alt=media&token=bfb2113f-ba28-4228-8697-59b476570fc9">
 						<input placeholder="Search for Your Favorite clubs and Bars Here" class="searchBar text-center" type="text" id="searchTextBox" onkeyup="filterList()"/>
-						<img id="closeImage" v-on:click="toggleClubs()" src="https://firebasestorage.googleapis.com/v0/b/wyme-wichita.appspot.com/o/Faenza-edit-delete-symbolic.svg?alt=media&token=ff893a60-ea6e-42dc-bf56-9abdd84486cf"/>
+						
 					</div>
+					<button id="closeButton" v-on:click="toggleClubs()">Back to Map</button>
 					<div v-for="clubS in clubs">
 					<transition-group name="fade">
 							<button v-if="club && clubS.name != selectedClub" key="clubS.name" v-on:click="checkIn(clubS.name)" class="voteDropBtn center">{{ clubS.name}} </button>

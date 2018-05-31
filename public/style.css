@@ -36,7 +36,19 @@
 	height: 200%;
 	border: 0;
 	position: relative;
+	font-size: 13pt;
 
+}
+#closeButton {
+	display: block;
+	width: 100%;
+	background-color: #ff3300;
+	color: white;
+	padding: 6px;
+	font-size: 6px;
+	border: none;
+	cursor: pointer;
+	border-radius: 12px;
 }
 
 .dropbtn {
