@@ -34,18 +34,19 @@ function mapLoaded() {
 		methods: {
 			checkOut: function(club) {
 				var v = this;
+				irebase.database().ref('clubs/' + club).set({
+					'count': (v.clubs[club](['count'] - 1) ),
+					'name': v.clubs[club]['name'],
+					'lon': v.clubs[club]['lon'],
+					'lat': v.clubs[club]['lat']
+			});
 				console.log(v.user.uid);
 				firebase.database().ref('users/' + v.user.uid).set({
 					'club':""
 				});
 				v.selectedClub = "";
 				console.log(v.selectedClub);
-				firebase.database().ref('clubs/' + club).set({
-					'count': (v.clubs[club](['count'] - 1) ),
-					'name': v.clubs[club]['name'],
-					'lon': v.clubs[club]['lon'],
-					'lat': v.clubs[club]['lat']
-			});
+				f
 			},
 			toggleClubs: function() {
 				v = this;
