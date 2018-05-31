@@ -18,7 +18,7 @@
 				
 					<div id="searchBar" class="container" v-show="club">
 						<input  class="searchBar" type="text" id="searchTextBox" onkeyup="filterList()"/>
-						<button v:on-click="toggleclubs()"> <img id="closeImage" src="https://firebasestorage.googleapis.com/v0/b/wyme-wichita.appspot.com/o/Faenza-edit-delete-symbolic.svg?alt=media&token=ff893a60-ea6e-42dc-bf56-9abdd84486cf"/></button>
+						<button v:on-click.stop="toggleclubs()"> <img id="closeImage" src="https://firebasestorage.googleapis.com/v0/b/wyme-wichita.appspot.com/o/Faenza-edit-delete-symbolic.svg?alt=media&token=ff893a60-ea6e-42dc-bf56-9abdd84486cf"/></button>
 					</div>
 					<div v-for="clubS in clubs">
 					<transition-group name="fade">
