@@ -10,14 +10,25 @@
 	margin-right: auto;
 }
 
+#closeImage {
+}
+
 #searchBar {
 	border: 0;
+	margin: 0px;
 	outline: 0;
+	margin: 0px;
 	width: 100%;
-	background: transparent;
+	background: white;
 	border-radius: 0px;
 	border-bottom: 1px solid black;
 	display: inline-block;
+}
+#searchTextBox {
+	width: 80%;
+	height: 100%;
+	border: 0;
+
 }
 
 .dropbtn {
@@ -99,11 +110,7 @@
 
 .checkedIn {}
 
-#checkinBtn::after {
-	content: "\2193";
-	left: 40%
 
-}
 
 .checkoutDropBtn{
 	background-color:  #ff5c33;
