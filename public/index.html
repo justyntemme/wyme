@@ -18,9 +18,9 @@
 				
 					<div id="searchBar" class="container" v-show="club">
 						<input  class="searchBar" type="text" id="searchTextBox" onkeyup="filterList()"/>
-						<button v:on-click.stop="toggleclubs()"> <img id="closeImage" src="https://firebasestorage.googleapis.com/v0/b/wyme-wichita.appspot.com/o/Faenza-edit-delete-symbolic.svg?alt=media&token=ff893a60-ea6e-42dc-bf56-9abdd84486cf"/></button>
+						 <img v-on:click="toggleClubs()" id="closeImage" src="https://firebasestorage.googleapis.com/v0/b/wyme-wichita.appspot.com/o/Faenza-edit-delete-symbolic.svg?alt=media&token=ff893a60-ea6e-42dc-bf56-9abdd84486cf"/>
 					</div>
-					<div v-for="clubS in clubs">
+					<div v-for="clubS in clubs"
 					<transition-group name="fade">
 							<button v-if="club && club.name != selectedClub" key="clubS.name" v-on:click="checkIn(clubS.name)" class="voteDropBtn center">{{ clubS.name}} </button>
 							<button v-if="club && selectedClub == clubS.name" key="clubS.name" v-on:click="checkOut(clubS.name)" class="checkoutDropBtn center">{{ clubS.name}} </button>
