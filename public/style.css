@@ -30,8 +30,8 @@
 	display: inline-block;
 }
 #searchTextBox {
-	width: 70%;
-	height: 100%;
+	width: 100%;
+	height: 200%;
 	border: 0;
 
 }
