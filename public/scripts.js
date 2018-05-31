@@ -48,6 +48,10 @@ function mapLoaded() {
 			},
 			checkOut: function(club) {
 				var v = this;
+				console.log(club)
+
+				console.logs(v.clubs[club]['count'])
+				console.logs(v.clubs[club]['count'] - 1)
 				firebase.database().ref('clubs/' + club).set({
 					'count': (v.clubs[club]['count'] - 1) ,
 					'name': v.clubs[club]['name'],
