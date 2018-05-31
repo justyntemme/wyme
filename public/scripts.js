@@ -41,7 +41,7 @@ function mapLoaded() {
 				v.selectedClub = "";
 				console.log(v.selectedClub);
 				firebase.database().ref('clubs/' + club).set({
-					'count': (v.clubs[club]['count'] - 1 ),
+					'count': (v.clubs[club](['count'] - 1) ),
 					'name': v.clubs[club]['name'],
 					'lon': v.clubs[club]['lon'],
 					'lat': v.clubs[club]['lat']
