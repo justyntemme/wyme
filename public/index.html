@@ -21,7 +21,7 @@
 						<input placeholder="Search for Your Favorite clubs and Bars Here" class="searchBar text-center" type="text" id="searchTextBox" onkeyup="filterList()"/>
 						
 					</div>
-					<button id="closeButton" v-on:click="toggleClubs()">Back to Map</button>
+					<button v-if="club" id="closeButton" v-on:click="toggleClubs()">Back to Map</button>
 					<div v-for="clubS in clubs">
 					<transition-group name="fade">
 							<button v-if="club && clubS.name != selectedClub" key="clubS.name" v-on:click="checkIn(clubS.name)" class="voteDropBtn center">{{ clubS.name}} </button>
