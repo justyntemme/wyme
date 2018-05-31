@@ -21,7 +21,7 @@ function mapLoaded() {
 		el: '#app',
 		data: {
 			loginVisible: true,
-			checkinVisible: true,
+			checkinVisible: false,
 			club: false,
 			searchVisable: true,
 			loggedIn: false,
