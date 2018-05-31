@@ -11,11 +11,10 @@
 }
 
 #closeImage {
-	width: 5%;
+	width: 15%;
 	float: right;
 }
 #searchImage {
-	width: 5%;
 	float: left;
 }
 #searchImage::float {
@@ -30,7 +29,7 @@
 	background: white;
 	border-radius: 0px;
 	border-bottom: 1px solid black;
-	display: inline-block;
+	display: inline-flex;
 }
 #searchTextBox {
 	width: 100%;
