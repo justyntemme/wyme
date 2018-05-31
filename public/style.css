@@ -18,6 +18,9 @@
 	width: 5%;
 	float: left;
 }
+#searchImage::float {
+	cursor: pointer;
+}
 #searchBar {
 	border: 0;
 	margin: 0px;
