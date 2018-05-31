@@ -21,10 +21,10 @@ function mapLoaded() {
 		el: '#app',
 		data: {
 			loginVisible: false,
-			checkinVisible: true,
+			checkinVisible: false,
 			club: false,
-			searchVisable: true,
-			loggedIn: true,
+			searchVisable: false,
+			loggedIn: false,
 			selectedClub: "",
 			user: firebase.auth.user, 
 			heatPoints: new google.maps.MVCArray(),

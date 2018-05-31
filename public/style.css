@@ -11,6 +11,8 @@
 }
 
 #closeImage {
+	width: 5%;
+	float: right;
 }
 
 #searchBar {
