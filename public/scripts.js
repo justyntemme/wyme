@@ -40,6 +40,12 @@ function mapLoaded() {
 				});
 				v.selectedClub = "";
 				console.log(v.selectedClub);
+				firebase.database().ref('clubs/' + club).set({
+					'count': (v.clubs[club]['count'] - 1 ),
+					'name': v.clubs[club]['name'],
+					'lon': v.clubs[club]['lon'],
+					'lat': v.clubs[club]['lat']
+			});
 			},
 			toggleClubs: function() {
 				v = this;
@@ -54,7 +60,7 @@ function mapLoaded() {
 				for (var key in v.clubs) {
 					var lat = v.clubs[key].lat;
 					var lon = v.clubs[key].lon;
-					var i = 0;
+					 var i = 0;
 					while (i < v.clubs[key].count) {
 						v.heatPoints.push(new google.maps.LatLng(lat,lon));
 						i++;
