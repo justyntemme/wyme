@@ -20,8 +20,8 @@ function mapLoaded() {
 	app = new Vue({
 		el: '#app',
 		data: {
-			loginVisible: false,
-			checkinVisible: false,
+			loginVisible: true,
+			checkinVisible: true,
 			club: false,
 			searchVisable: true,
 			loggedIn: false,
@@ -32,10 +32,24 @@ function mapLoaded() {
 				{}
 		},
 		methods: {
+			checkIn: function(club) {
+				var v = this;
+				v.checkinVisible = false;
+				v.selectedClub = club;
+				firebase.database().ref('clubs/' + club).set({
+					'count': (v.clubs[club]['count'] + 1 ),
+					'name': v.clubs[club]['name'],
+					'lon': v.clubs[club]['lon'],
+					'lat': v.clubs[club]['lat']
+			});
+			firebase.database().ref('users/' + v.user.uid).set({
+				'club': club
+			});
+			},
 			checkOut: function(club) {
 				var v = this;
-				irebase.database().ref('clubs/' + club).set({
-					'count': (v.clubs[club](['count'] - 1) ),
+				firebase.database().ref('clubs/' + club).set({
+					'count': (v.clubs[club]['count'] - 1) ,
 					'name': v.clubs[club]['name'],
 					'lon': v.clubs[club]['lon'],
 					'lat': v.clubs[club]['lat']
@@ -111,20 +125,7 @@ function mapLoaded() {
 				};
 					ui.start('#firebaseui-auth-container', uiConfig);
 			},
-			checkIn: function(club) {
-				var v = this;
-				v.checkinVisible = false;
-				v.selectedClub = club;
-				firebase.database().ref('clubs/' + club).set({
-					'count': (v.clubs[club]['count'] + 1 ),
-					'name': v.clubs[club]['name'],
-					'lon': v.clubs[club]['lon'],
-					'lat': v.clubs[club]['lat']
-			});
-			firebase.database().ref('users/' + v.user.uid).set({
-				'club': club
-			});
-			},
+		
 			updateMaps: function() {
 				var v = this;
 				while (v.heatPoints.length > 0) {v.heatPoints.pop();} 
