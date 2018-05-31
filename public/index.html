@@ -17,8 +17,8 @@
 					<button v-show="searchVisable"  v-on:click="toggleClubs()"  id="checkinBtn" class="checkinBtn">View Clubs</button>
 				
 					<div id="searchBar" class="container" v-show="club">
-						<img id="searchImage" src="https://firebasestorage.googleapis.com/v0/b/wyme-wichita.appspot.com/o/Faenza-edit-delete-symbolic.svg?alt=media&token=ff893a60-ea6e-42dc-bf56-9abdd84486cf">
-						<input  class="searchBar text-center" type="text" id="searchTextBox" onkeyup="filterList()"/>
+						<img id="searchImage" src="gs://wyme-wichita.appspot.com/icons8-search-50.png">
+						<input placeholder="Search for Your Favorite clubs and Bars Here" class="searchBar text-center" type="text" id="searchTextBox" onkeyup="filterList()"/>
 						<img id="closeImage" v-on:click="toggleClubs()" src="https://firebasestorage.googleapis.com/v0/b/wyme-wichita.appspot.com/o/Faenza-edit-delete-symbolic.svg?alt=media&token=ff893a60-ea6e-42dc-bf56-9abdd84486cf"/>
 					</div>
 					<div v-for="clubS in clubs">
