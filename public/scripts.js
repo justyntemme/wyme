@@ -20,10 +20,10 @@ function mapLoaded() {
 	app = new Vue({
 		el: '#app',
 		data: {
-			loginVisible: true,
+			loginVisible: false,
 			checkinVisible: false,
 			club: false,
-			searchVisable: true,
+			searchVisable: false,
 			loggedIn: false,
 			selectedClub: "",
 			user: firebase.auth.user, 
