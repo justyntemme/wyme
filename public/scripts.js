@@ -23,7 +23,7 @@ function mapLoaded() {
 			loginVisible: false,
 			checkinVisible: false,
 			club: false,
-			searchVisable: false,
+			searchVisable: true,
 			loggedIn: false,
 			selectedClub: "",
 			user: firebase.auth.user, 
